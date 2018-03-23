@@ -1,0 +1,64 @@
+<?php
+session_start();
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>City Town</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+	<link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
+	<link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<!--<link rel="stylesheet" type="text/css" href="cityTownstylesheet.css"> -->
+<style>
+	body{margin: 0 auto; font-family: 'Quicksand', sans-serif;}
+	.w3-theme {color:#fff !important;background-color:#024575 !important}
+
+	.w3-text-theme-d1 {color:#024575 !important}
+	.w3-text-theme-d2 {color:#e9f5ff !important}
+	.w3-hover-text-theme-d1 {color: #e9f5ff !important}
+	#img {position:relative; top:0; left:0; min-width:100%; min-height:50%; overflow:hidden;}
+	h1 {font-family: 'Quicksand', sans-serif; font-weight: bold;}
+	html{overflow-y: hidden;}
+</style>
+</head>
+
+<body style="overflow:hidden;">
+
+<!-- Top Bar -->
+<div class="w3-bar  w3-theme w3-large" >
+  	<button class="w3-bar-item w3-button w3-hide-large w3-hover-none w3-hover-text-theme-d1" onclick="w3_open();"><i class="fa fa-bars"></i> Menu</button>
+			<a href="index.html">HOME</a>
+			<a href="cityTownAbout.html">ABOUT</a>
+			<a href="cityTownContact.html">CONTACT</a>
+			<a href="userRegistration.html">REGISTER</a>
+			<a href="login.html">SIGN IN</a>
+			
+ 	 <span class="w3-bar-item w3-text-theme-d2 w3-right">City Town</span>
+	<span class="w3-bar-item w3-text-theme-d2 w3-left"></span>
+</div>
+
+<div>
+	<form action="login.php" method="POST">
+		<fieldset>
+			<legend>LOGIN</legend>
+			Username: <input type="text" name="username" placeholder="Enter username.."> <br><br>
+
+    		Password: <input type="password" name="password" placeholder="Enter password.."> <br><br>
+
+    		<input id="remember" type="checkbox">Remember me
+    		<br><br>
+
+    		<input type="submit" value="Submit">
+			<button type="reset" value="Reset">Reset</button> 
+			<input type="submit" formaction="forgotUsername.html" value="Forgot Username">
+			<input type="submit" formaction="forgotPassword.html" value="Forgot Password"> 
+		</fieldset>
+	</form>
+</div>
+
+</body>
+</html>
