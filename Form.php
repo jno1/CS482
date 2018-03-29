@@ -107,149 +107,169 @@ var d = new Date();
 document.getElementById("time").innerHTML = d.toDateString();
 </script>
 
-<div class="container" style="margin-left:220px" >
-  <fieldset>
-	 <h2>ALARM USER PERMIT APPLICATION</h2>
-		<p><b>APPLICANT - owner or tenant of record</b></p>
-		<form action="paymentpage.html">
-			<div class="form-group">
-				<label for="fnmae">Name:</label>
-				<input type="email" class="form-control" id="fname" placeholder="Enter First name" name="email">
-				<input type="lname" class="form-control" id="lname" placeholder="Enter Last name" name="email">
-			</div>
+	<div class="container" style="margin-left:220px" >
+	  <fieldset>
+		 <h2>ALARM USER PERMIT APPLICATION</h2>
+			<p><b>APPLICANT - owner or tenant of record</b></p>
+			<form id="form" method="post" action="Formdb.php" role="form">
 			
-		 <div class="form-group">
-				<label for="address">Address:</label>
-				<input type="address" class="form-control" id="address" placeholder="Enter Address" name="address">
-			</div>
-					
-			<div class="form-group">
-				<label for="alarmAd">Address of Alarmed Premise:</label>
-				<input type="alarmAd" class="form-control" id="alarmAd" placeholder="Enter Address" name="alarmAd">
-			</div>
-			
-		<div class="form-check">
-			<p><b>ALERTING DEVICE(s) - check applicable box</b></p>
-			<div>
-			<label class="form-check-label" >
-					<div>
-					<input class="form-check-input" type="checkbox" name="remember"> SILENT - no audible signals emitted</div>
-					<div>
-					<input class="form-check-input" type="checkbox" name="remember"> AUDIBLE INTERIOR - alerting devices audible within premises only</div>
-					
-					<div>
-					<input class="form-check-input" type="checkbox" name="remember"> AUDIBLE INTERIOR - alerting devices audible within premises only</div>
-					<div>
-					<input class="form-check-input" type="checkbox" name="remember"> AUDIBLE EXTERIOR - alerting devices audible outside of premises</div>
-					<div>
-					<input class="form-check-input" type="checkbox" name="remember"> AUDIBLE INTERIOR / EXTERIOR - alerting devices audible inside and outside	
-		</div>	
-		</label>			
-		</div>
-			
-		<div class="form-check">
-			<p><b>TYPE OF ALARM SYSTEM - check applicable box</b></p>
-			<div>
-			<label class="form-check-label" >
-					<div>
-					<input class="form-check-input" type="checkbox" name="remember"> LOCAL ALARM - alarm sounds within or outside of premises ONLY - no connections</div>
-					<div>
-					<input class="form-check-input" type="checkbox" name="remember"> CENTRAL STATION ALARM - system interconnected to a private security and /or monitoring facility by any method
-		</div>
-		</label>
-		</div>
-			
-		<div class="form-check">
-			<p><b>LOCAL ORDINANCE COMPLIANCE - check applicable box</p>
-			<p>A.	Systems equipped with an audible alerting device which is perceptible outside of the alarmed premises must incorporate a device which will silence such audible signals within twenty (20) minutes of its activation.</b></p>
+				<div class="form-group">
+					<label for="fname">First Name:</label>
+					<input type="text" class="form-control" id="fname" placeholder="Enter First name" name="fname">
+					</div>
 				<div>
-				<label class="form-check-label" >
-					<div>
-					<input class="form-check-input" type="checkbox" name="remember"> SILENT - no audible signals emitted</div>
-					<div>
-					<input class="form-check-input" type="checkbox" name="remember"> System equipped with silencing device as required</div>
-					
-					<div>
-					<input class="form-check-input" type="checkbox" name="remember"> System not so equipped</div>
-					<div>
-					<input class="form-check-input" type="checkbox" name="remember"> Not applicable - no audible signal perceptible outside of premises
-			</div>
-			</label>
-			</div>
-			
-			<div class="form-check">
+					<label for="lname">Last Name:</label>
+					<input type="text" class="form-control" id="lname" placeholder="Enter Last name" name="email">
+				</div>
 				
-				<p><b>B.        Central Station Alarm users must ensure that, prior to police notification of an alarm
-				activation, the central  station monitoringfacility must first attempt to verify the authenticity of the alarm and the need for emergency response by police personnel. ThisMUSTinclude an attempt to contact personsat the alarmed premises. (Thisrequirement doesnot apply to holdup, panicor fire signals).</p></b>
-					<div>
-					<label class="form-check-label" >
+			 <div class="form-group">
+					<label for="address">Address:</label>
+					<input type="address" class="form-control" id="address" placeholder="Enter Address" name="address">
+				</div>
+						
+				<div class="form-group">
+					<label for="alarmAd">Address of Alarmed Premise:</label>
+					<input type="alarmAd" class="form-control" id="alarmAd" placeholder="Enter Address" name="alarmAd">
+				</div>
+				
+			<div>
+				<p><b>ALERTING DEVICE(s) - check applicable box</b></p>
+				
+						<div class="radio">
+						<label><input  type="radio" name="AD"> SILENT - no audible signals emitted</label></div>
+						
+						<div class="radio">
+						<label><input  type="radio" name="AD"> AUDIBLE INTERIOR - alerting devices audible within premises only</label></div>
+						
+						<div class="radio">
+						<label><input  type="radio" name="AD"> AUDIBLE EXTERIOR - alerting devices audible outside of premises</label></div>
+						<div class="radio">
+						<label><input  type="radio" name="AD"> AUDIBLE INTERIOR / EXTERIOR - alerting devices audible inside and outside	</label></div>	
+					
+			</div>
+				
+			<div>
+				<p><b>TYPE OF ALARM SYSTEM - check applicable box</b></p>
+				
+						<div class="radio" >
+						<label><input class="radio" type="radio" name="TA"> LOCAL ALARM - alarm sounds within or outside of premises ONLY - no connections</label></div>
+						<div class="radio" >
+						<label><input class="radio" type="radio" name="TA"> CENTRAL STATION ALARM - system interconnected to a private security and /or monitoring facility by any method</label></div>
+			</div>
+				
+			<div>
+				<p><b>LOCAL ORDINANCE COMPLIANCE - check applicable box</p>
+				<p>A.	Systems equipped with an audible alerting device which is perceptible outside of the alarmed premises must incorporate a device which will silence such audible signals within twenty (20) minutes of its activation.</b></p>
+					
+					<label class="radio" >
 						<div>
-						<input class="form-check-input" type="checkbox" name="remember"> Central Station facility required to make verification callsasrequired</div>
+						<input class="radio" type="radio" name="LO"> SILENT - no audible signals emitted</div>
 						<div>
-						<input class="form-check-input" type="checkbox" name="remember"> Central Station facility doesnot make verification calls</div>
+						<input class="radio" type="radio" name="LO"> System equipped with silencing device as required</div>
 						
 						<div>
-						<input class="form-check-input" type="checkbox" name="remember"> Not applicable - not central station alarm
-				</div>
+						<input class="radio" type="radio" name="LO"> System not so equipped</div>
+						<div>
+						<input class="radio" type="radio" name="LO"> Not applicable - no audible signal perceptible outside of premises</div>
 				</label>
-				</div>	
+				</div>
 				
-				<p><b>ALARM SERVICE AGENCY - firm which currently services your system</b></p>
-					<div class="form-group">
-						<label for="fnmae">Name of Alarm Company:</label>
-						<input type="email" class="form-control" id="fname" placeholder="Enter name" name="email">
+				<div>
 					
-					</div>
-					
-				 <div class="form-group">
-						<label for="address">Address:</label>
-						<input type="address" class="form-control" id="address" placeholder="Enter Address" name="address">
-					</div>
+					<p><b>B. Central Station Alarm users must ensure that, prior to police notification of an alarm
+					activation, the central  station monitoringfacility must first attempt to verify the authenticity of the alarm and the need for emergency response by police personnel. ThisMUSTinclude an attempt to contact personsat the alarmed premises. (Thisrequirement doesnot apply to holdup, panicor fire signals).</p></b>
+						
+						<label class="radio" >
+							<div>
+							<input class="radio" type="radio" name="CS"> Central Station facility required to make verification calls as required</div>
+							<div>
+							<input class="radio" type="radio" name="CS"> Central Station facility does not make verification calls</div>
 							
-					<div class="form-group">
-						<label for="alarmAd">Telephone:</label>
-						<input type="alarmAd" class="form-control" id="alarmAd" placeholder="Enter telephone number" name="alarmAd">
-					</div>
+							<div>
+							<input class="radio" type="radio" name="CS"> Not applicable - not central station alarm</div>
+	 				</label>
+					</div>	
 					
 					
-					<p><b>EMERGENCY CONTACT LIST - persons (including yourself) who should be contacted in the event of an on premises emergency. A minimum of two names should he submitted, preferably persons who have access to the promises and are familiar with the alarm system.</b></p>
+					<p><b>ALARM SERVICE AGENCY - firm which currently services your system</b></p>
 						<div class="form-group">
-							<label for="fnmae">1. Name: </label>
-							<input type="email" class="form-control" id="fname" placeholder="Enter name" name="email">
-							
-							<input type="email" class="form-control" id="fname" placeholder="Enter telephone" name="email">
+							<label for="ACname">Name of Alarm Company:</label>
+							<input type="text" class="form-control" id="ACname" placeholder="Enter Alarm Company" name="ACname">
 						
 						</div>
 						
 					 <div class="form-group">
-							<label for="fnmae">2. Name: </label>
-							<input type="email" class="form-control" id="fname" placeholder="Enter name" name="email">
-							
-							<input type="email" class="form-control" id="fname" placeholder="Enter telephone" name="email">
+							<label for="ACaddress">Address:</label>
+							<input type="text" class="form-control" id="ACaddress" placeholder="Enter Alarm Company Address" name="ACAddress">
 						</div>
 								
 						<div class="form-group">
-							<label for="fnmae">3. Name: </label>
-							<input type="email" class="form-control" id="fname" placeholder="Enter name" name="email">
-							
-							<input type="email" class="form-control" id="fname" placeholder="Enter telephone" name="email">
+							<label for="ACphone">Telephone:</label>
+							<input type="text" class="form-control" id="ACphone" placeholder="Enter Telephone number" name="Aphone">
 						</div>
-						<p><center>PLEASE CONTACT THE CLERK'S OFFICE IN WRITING OF ANY CHANGES IN YOUR CONTACT LIST</center></p>
-			<p><b>I hereby apply for an Alarm Users Permit pursuant to the provisions of Local Law No. 1-1988 of the Town of Mamaroneck, Now York. I certify that the information I have provided herein is accurate. Furthermore, I have received a copy of the current local ordinance regulating and controlling
-			alarm systems within the Unincorporated Area of the Town of Mamaroneck. I have read same and understand it.
-			</b></p>
-								<div class="form-group">
-									<label for="fnmae">Signature of Applicant:</label>
-									<input type="email" class="form-control" id="fname" placeholder="Electronic Signature " name="email">
-								
+						
+						
+						<p><b>EMERGENCY CONTACT LIST - persons (including yourself) who should be contacted in the event of an on premises emergency. A minimum of two names should he submitted, preferably persons who have access to the promises and are familiar with the alarm system.</b></p>
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group">
+								<label for="Ename1">1. Emergency Contact: * </label>
+								<input type="text" class="form-control" id="Ename1" placeholder="Enter name" name="Ename1">
 								</div>
-								<p><center><b>NOTICE: It is a crime, punishable as a Class A misdemeanor, to knowingly make a false statement herein (Section 210. 45 New York State Penal Law)</b></center></p>
+								</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label for="Ephone1">Telephone: * </label>
+								<input type="tel" class="form-control" id="Ephone1" placeholder="Enter telephone" name="Ephone1">
+							</div>
+							</div>
+							</div>
+							
+					<div class="row">
+						<div class="col-md-6">	
+							<div class="form-group">
+								<label for="Ename2">2. Emergency Contact: * </label>
+								<input type="text" class="form-control" id="Ename2" placeholder="Enter name" name="Ename2">
+								</div>
+								</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label for="Ephone2">Telephone: * </label>
+								<input type="tel" class="form-control" id="Ephone2" placeholder="Enter telephone" name="Ephone2">
+							</div>
+							</div>
+							</div>
+					<div class="row">
+						<div class="col-md-6">		
+							<div class="form-group">
+								<label for="Ename3">3. Emergency Contact: </label>
+								<input type="text" class="form-control" id="Ename3" placeholder="Enter name" name="Ename3">
+								</div>
+								</div>
+						<div class="col-md-6">
+							<div class="form-group">
+										<label for="Ephone3">Telephone:  </label>
+								<input type="tel" class="form-control" id="Ephone3" placeholder="Enter telephone" name="Ephone3">
+							</div>
+							</div>
+							</div>
+							<p><center>PLEASE CONTACT THE CLERK'S OFFICE IN WRITING OF ANY CHANGES IN YOUR CONTACT LIST</center></p>
+				<p><b>I hereby apply for an Alarm Users Permit pursuant to the provisions of Local Law No. 1-1988 of the Town of Mamaroneck, Now York. I certify that the information I have provided herein is accurate. Furthermore, I have received a copy of the current local ordinance regulating and controlling
+				alarm systems within the Unincorporated Area of the Town of Mamaroneck. I have read same and understand it.
+				</b></p>
+									<div class="form-group">
+										<label for="appElecSig">Signature of Applicant:</label>
+										<input type="etext" class="form-control" id="appElecSig" placeholder="Electronic Signature " name="appElecSig">
+									
+									</div>
+									<p><center><b>NOTICE: It is a crime, punishable as a Class A misdemeanor, to knowingly make a false statement herein (Section 210. 45 New York State Penal Law)</b></center></p>
 
-			<button type="submit" class="btn btn-primary"><a href="paymentpageHTML.php">Submit</button></a>
-	</form>
+				<button type="submit" class="btn btn-primary">Submit</button>
+		</form>
+		</div>
+
+			</fieldset>
 	</div>
+	</body>
+		</html>
 
-		</fieldset>
-</div>
-</body>
-	</html>
