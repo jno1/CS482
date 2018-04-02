@@ -16,7 +16,10 @@ if(!empty($username) && !empty($password) && !empty($passConfirm) &&
 	!empty($fName) && !empty($lName) && !empty($phoneNum) && !empty($email) &&
 	!empty($Address) && !empty($secQuest)) 
 {
-	if($password == $passConfirm)
+	if($password == $passConfirm  && $password= preg_match( '/[A-Z]/', $password ) && # uppercase char 
+		    preg_match( '/[a-z]/', $password ) && # lowercase char
+			preg_match( '/\d/', $password ) &&    # digit
+			(strlen($password) > 8))
 	{
 		$host = "localhost";
 		$dbusername = "root";
