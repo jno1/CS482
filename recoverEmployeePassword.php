@@ -9,7 +9,10 @@ $confirmNewPass = filter_var($_POST['confirmNewPass'], FILTER_SANITIZE_STRING);
 
 if(isset($_POST['first']) && isset($_POST['last']) && isset($_POST['deptID']) && isset($_POST['username']) && isset($_POST['newPass']) && isset($_POST['confirmNewPass']))
 {
-    if($newPass == $confirmNewPass)
+    if($newPass == $confirmNewPass && $newpass= preg_match( '/[A-Z]/', $newpass ) && # uppercase char 
+            preg_match( '/[a-z]/', $newpass ) && # lowercase char
+            preg_match( '/\d/', $newpass ) &&    # digit
+            (strlen($newpass) > 8))
     {
         $server= 'localhost';
         $username = 'root';

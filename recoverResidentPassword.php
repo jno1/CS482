@@ -9,7 +9,10 @@ $secQuestAns = filter_var($_POST['secQuestAns'], FILTER_SANITIZE_STRING);
 
 if(!empty($fName) && !empty($lName) && !empty($user) && !empty($newPass) && !empty($confirmNewPass) && !empty($secQuestAns))
 {
-    if($newPass == $confirmNewPass)
+    if($newPass == $confirmNewPass && $newpass= preg_match( '/[A-Z]/', $newpass ) && # uppercase char 
+            preg_match( '/[a-z]/', $newpass ) && # lowercase char
+            preg_match( '/\d/', $newpass ) &&    # digit
+            (strlen($newpass) > 8))
     {
         $server= 'localhost';
         $username = 'root';
