@@ -1,55 +1,90 @@
-<?php
-session_start();
+<!DOCTYPE html>
+<html lang="en">
+	<head>
 
-$comfirmationPage = "comfirmpasschange.html";
+	</head>
+	<body>
+		<?php
+		session_start();
+		if (isset($_SESSION['username']))
+		{
+			$currUserID = $_SESSION['username'];
+		}
+		else
+		{
+			header("Location: logout.php");
+		}
+		$server= 'localhost';
+		$username = 'root';
+		$dbpassword = 'root';
+		$dbname = "CT_Users";
+		$conn = new mysqli($server, $username, $dbpassword, $dbname);
+		
+		if (mysqli_connect_errno()) 
+		{ 
+			exit;
+		}
+		
 
-$server= 'localhost';
-$username = 'root';
-$dbpassword = 'root';
-$dbname = 'CT_Users';
+		$oldpass = $_GET['oldpassword'];
+		$newpass = $_GET['password'];
+		$comfpass = $_GET['password1'];
+	
+		
 
-$db = new mysqli($server, $username, $dbpassword, $dbname);
-if (mysqli_connect_errno()) 
-{ 
-	exit;
-}
+		if($newpass==$comfpass) {
+			$sqlEmp=("select * 
+						from users 
+							where userName='$currUserID' "); //currUserID
+			$result = $conn->query($sqlEmp) or die('Could not run query: '.$conn->error);
+				$row = $result->fetch_assoc();
+				$hashPass = $row["pass"];
+				$dehash = password_verify($oldpass, $hashPass);
+				if ($dehash==true) {
+					$hashPass1 = password_hash($comfpass, PASSWORD_DEFAULT, ['cost' => 10]);
+					$sql=("UPDATE users 
+							Set pass = '" .$hashPass1.
+								"' WHERE userName ='$currUserID' ");					
+					if ($conn->query($sql) == TRUE ) {
+		    			echo "update successfully";
+						$redirect = "changepassword.html";
+						header('Location:'.$redirect);
+		    
+					} 
+				else {
+		    		echo "Error: " . $sql . "<br>" . $conn->error;
 
-$oldpass = filter_var($_POST['oldpassword'], FILTER_SANITIZE_STRING);
-$newpass = filter_var($_POST['password'], FILTER_SANITIZE_STRING);
-$comfpass = filter_var($_POST['password1'], FILTER_SANITIZE_STRING);
+				}
+		
+			}
+	
+		
+			else{
+				echo "inccorect old password";
+			}
+		//}
+	}
+		
+	else {
+		
+		echo "fields did not match";
+
+		
+	}
+		
+
+	$conn->close();
+
+	?>
+</body>
+</html>
 
 
 
-if(isset($_GET['oldpassword']) && isset($_GET['password'])&& isset($_GET['password1']))
-{
-	if($newpass==$comfpass && $newpass= preg_match( '/[A-Z]/', $newpass ) && # uppercase char 
-            preg_match( '/[a-z]/', $newpass ) && # lowercase char
-            preg_match( '/\d/', $newpass ) &&    # digit
-            (strlen($newpass) > 8))
-{
-    $hashPass = $row["password"];
-    $result2 = password_verify($newpass,$hashPass);
-    
-    if ($result2 == true)
-    {
-    	$result = $db->query("UPDATE users SET pass='$newpass' WHERE userName='".$user."'");
-
-    	header('Location:'.$employeePage);
-    }
-    else
-    {
-    	echo "entered wrong password";
-    }
-    }
-    else
-    {
-       	echo "passwords did not match";
-    }
-    }
 
 
-    $result->free();
-    $db->close();
-}
 
-?>
+
+
+
+
