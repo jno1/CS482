@@ -16,17 +16,23 @@ if(!empty($username) && !empty($password) && !empty($passConfirm) &&
 	!empty($fName) && !empty($lName) && !empty($phoneNum) && !empty($email) &&
 	!empty($Address) && !empty($secQuest)) 
 {
+
+
 	if($password == $passConfirm  && $password= preg_match( '/[A-Z]/', $password ) && # uppercase char 
 		    preg_match( '/[a-z]/', $password ) && # lowercase char
 			preg_match( '/\d/', $password ) &&    # digit
 			(strlen($password) > 8))
 	{
+	
+
 		$host = "localhost";
 		$dbusername = "root";
 		$dbpassword = "root";
 		$dbname = "CT_Users";
 
+
 		$conn = new mysqli($host, $dbusername, $dbpassword, $dbname);
+
 
 		if(mysqli_connect_error())
 		{
@@ -34,22 +40,31 @@ if(!empty($username) && !empty($password) && !empty($passConfirm) &&
 		}
 		else
 		{
+		
+
 			$result = $conn->query("SELECT userName, pass FROM users WHERE userName = '$username' AND pass = '$password'");
+
 
 			if($result->num_rows != 0)
 				echo "User information is already used!";
 			else
 			{
+			
+
 				$securePass = password_hash($password,PASSWORD_DEFAULT, ['cost' => 10]);
-                $sql = "INSERT INTO users (userName, pass, fName, lName, secQuest, email, phoneNumber, cellNumber, address) VALUES ('$username', '$securePass', '$fName', '$lName', '$secQuest', '$email', '$phoneNum', '$cellNum', '$Address')";
+                $sql = "INSERT INTO users (userName, pass, fName, lName, questions, email, phoneNumber, cellNumber, address) VALUES ('$username', '$securePass', '$fName', '$lName', '$secQuest', '$email', '$phoneNum', '$cellNum', '$Address')";
 			}
 
 			if($conn->query($sql))
 			{
+			
+
 				echo "You have successfully registered. Welcome to City Town $fName $lName. Please login."; 
 			}
 			else
 			{
+			
+
 				echo "Error: ".$sql."<br>".$conn->error;
 			}
 

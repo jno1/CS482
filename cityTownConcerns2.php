@@ -1,5 +1,4 @@
 <?php 
-
 	session_start();
 	if (isset($_SESSION['username']))
 	{
@@ -66,40 +65,40 @@ h1{
 </head>
 <body style="overflow:hidden;">
 
-<!-- Top Bar -->
+
 <div class="w3-bar  w3-theme w3-large" >
   	<span> Welcome, <?php echo $currUserID;?> <a href="logout.php"><b>(logout)</b></a></span>
-
+			
+				
  	 <span class="w3-bar-item w3-text-theme-d2 w3-right">City Town</span>
 	<span class="w3-bar-item w3-text-theme-d2 w3-left"></span>
 </div>
-<!-- End of Top Bar -->
 
-<!-- Name and Date -->
+
 
 <div class="w3-col s8 w3-bar w3-text-grey" style="margin-left:5px">
       <b><p id="time"></p></b>
     </div>
-<!-- End  -->
 
-<!-- Left Column -->
+
 <header class="w3-container w3-text-grey">
 
     <h5><b><i class="fa fa-user-circle "></i> MY ACCOUNT</b></h5>
 
- </header>
-
+  </header>
 
 
 <ul>
 
   	<li><a class="active" href="BackendHome.php"><i class="fa fa-home"></i> HOME</a></li>
-	<li><a href="caseHistory.php"> <i class="fa fa-credit-card-alt"></i> CASE HISTORY</a></li>
+	<li><a href="caseHistory.php"> <i class="fa fa-credit-card-alt"></i>  Case History</a></li>
 	<li><a href="cityTownConcerns2.php"><i class="fa fa-question"></i>  MY CONCERNS</a></li>
 	<li><a href="accountsettings2.php"><i class="fa fa-cog"></i>  ACCOUNT SETTINGS</a></li>
 </ul>
 
 <!-- End  -->
+
+	
 
 
 <!-- Javascript for date -->
@@ -110,37 +109,52 @@ document.getElementById("time").innerHTML = d.toDateString();
 <!-- End  -->
 
 <!--  Right Column -->
-<div class="w3-content w3-margin-top" style="max-width:1400px;">
-<div class="w3-row-padding">
-  
-<div class="w3-twothird" style="margin-left:300px">
-		
-	<div class="w3-container w3-card w3-white w3-margin-bottom">
-		<h2 class="w3-text-grey w3-padding-16"><i class="fa fa-dashboard fa-fw w3-margin-right w3-xxlarge w3-text-theme"></i>My Dashboard</h2>
-			<div class="w3-container">
-			<h5 class="w3-opacity"><b>Incoming Cases</b></h5>
-			<h6 class="w3-text-theme-d1"><i class="fa fa-calendar fa-fw w3-margin-right"></i><span class="w3-tag w3-theme w3-round">New</span>
-				<span class="badge">20</span></h6>
-					
-					<hr>
-	</div>
-	<div class="w3-container">
-		<h5 class="w3-opacity"><b>Existing Form</b></h5>
-		<h6 class="w3-text-theme-d1"><i class="fa fa-calendar fa-fw w3-margin-right"></i>Started - Dec 2017<span class="w3-tag w3-theme w3-round">Current</span></h6>
-					
-					<hr>
-	</div>
-	<div class="w3-container">
-		<h5 class="w3-opacity"><b>Existing Concerns</b></h5>
-		<h6 class="w3-text-theme-d1"><i class="fa fa-calendar fa-fw w3-margin-right"></i>No Existing Concerns</h6>
-					
-	</div>
+<h2>
+	<center> City Town</center>
+</h2>
+
+<div>
+	<center><p><b>Concerns/Feedback</b></p><center>
+		<form action="submitConcern.php" method="POST">
+			Type of feedback: <select name="feedback">
+				<option value="----">----</option>
+				<option value="Questions">Questions</option>
+				<option value="Concerns">Concerns</option>
+				<option value="Comments">Comments</option>
+			</select>
+			<p>
+			Department to send to: <select name="department">
+				<option value="----">----</option>
+				<option value="Town Administrator">Town Administrator</option>
+				<option value="Town Clerk">Town Clerk</option>
+				<option value="Police Department">Police Department</option>
+				<option value="Fire Department">Fire Department</option>
+			</select>
+			<p>
+				<textarea placeholder="Explain..." id="explain" name="explain" maxlength="1000" rows="10" cols="50" onkeyup="countChar(this)"></textarea>
+			</p>
+			<span id="chars">1000</span> characters remaining <p>
+			<input type="submit" onclick="alertMsg()" />
+		</form>
+	</center>
 </div>
 
+<script>
+	function alertMsg() {
+		alert("Thank you for your submission");
+	}
+</script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script>
+var maxLength = 1000;
+$('textarea').keyup(function() {
+	var length = $(this).val().length;
+	var length = maxLength-length;
+	$('#chars').text(length);
+});
+</script>
 			
 		<!-- End Right Column -->
-</div>
-</div>
-
 </body>
 </html>

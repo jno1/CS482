@@ -7,7 +7,7 @@ $fName = filter_var($_POST['fname'], FILTER_SANITIZE_STRING);
 $lName = filter_var($_POST['lname'], FILTER_SANITIZE_STRING);
 $phoneNum = filter_var($_POST['phoneNum'], FILTER_SANITIZE_STRING);
 $email = filter_var($_POST['email'], FILTER_SANITIZE_STRING);
-$deptID = filter_var($_POST['deptID'], FILTER_SANITIZE_STRING);
+$deptID = filter_var($_POST['dept_ID'], FILTER_SANITIZE_STRING);
 
 if(!empty($username) && !empty($password) && !empty($passConfirm) && !empty($fName) && !empty($lName) && !empty($phoneNum) && !empty($email) && !empty($deptID))
 {

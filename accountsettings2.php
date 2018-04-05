@@ -1,5 +1,4 @@
 <?php 
-
 	session_start();
 	if (isset($_SESSION['username']))
 	{
@@ -69,7 +68,8 @@ h1{
 <!-- Top Bar -->
 <div class="w3-bar  w3-theme w3-large" >
   	<span> Welcome, <?php echo $currUserID;?> <a href="logout.php"><b>(logout)</b></a></span>
-
+			
+				
  	 <span class="w3-bar-item w3-text-theme-d2 w3-right">City Town</span>
 	<span class="w3-bar-item w3-text-theme-d2 w3-left"></span>
 </div>
@@ -101,6 +101,8 @@ h1{
 
 <!-- End  -->
 
+	
+
 
 <!-- Javascript for date -->
 <script>
@@ -115,26 +117,14 @@ document.getElementById("time").innerHTML = d.toDateString();
   
 <div class="w3-twothird" style="margin-left:300px">
 		
-	<div class="w3-container w3-card w3-white w3-margin-bottom">
-		<h2 class="w3-text-grey w3-padding-16"><i class="fa fa-dashboard fa-fw w3-margin-right w3-xxlarge w3-text-theme"></i>My Dashboard</h2>
-			<div class="w3-container">
-			<h5 class="w3-opacity"><b>Incoming Cases</b></h5>
-			<h6 class="w3-text-theme-d1"><i class="fa fa-calendar fa-fw w3-margin-right"></i><span class="w3-tag w3-theme w3-round">New</span>
-				<span class="badge">20</span></h6>
-					
-					<hr>
+
+		<div class="w3-container w3-card w3-white w3-margin-bottom">
+		<h2 class="w3-text-grey w3-padding-16"><i class="fa fa-cog fa-fw w3-margin-right w3-xxlarge w3-text-theme"></i>Account settings</h2>
+			<li><a href="changepasswordHTML2.php"><b>Change Password</b></h5>
+								
+			<li><a href="editpersonalinfo2.html"><b>Edit Personal Information</b></h5>
 	</div>
-	<div class="w3-container">
-		<h5 class="w3-opacity"><b>Existing Form</b></h5>
-		<h6 class="w3-text-theme-d1"><i class="fa fa-calendar fa-fw w3-margin-right"></i>Started - Dec 2017<span class="w3-tag w3-theme w3-round">Current</span></h6>
-					
-					<hr>
-	</div>
-	<div class="w3-container">
-		<h5 class="w3-opacity"><b>Existing Concerns</b></h5>
-		<h6 class="w3-text-theme-d1"><i class="fa fa-calendar fa-fw w3-margin-right"></i>No Existing Concerns</h6>
-					
-	</div>
+	
 </div>
 
 			

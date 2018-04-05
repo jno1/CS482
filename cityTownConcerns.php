@@ -91,7 +91,7 @@ h1{
 <ul>
 
   	<li><a class="active" href="FrontendHome.php"><i class="fa fa-home"></i> HOME</a></li>
-	<li><a href="dropdown_BloodTypes.php"> <i class="fa fa-credit-card-alt"></i>  MY PAYMENTS</a></li>
+	<li><a href="paymentpageHTML.php"> <i class="fa fa-credit-card-alt"></i>  MY PAYMENTS</a></li>
 	<li><a href="cityTownConcerns.php"><i class="fa fa-question"></i>  MY CONCERNS</a></li>
 	<li><a href="accountsettings.php"><i class="fa fa-cog"></i>  ACCOUNT SETTINGS</a></li>
 </ul>

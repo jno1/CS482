@@ -1,3 +1,5 @@
+<!DOCTYPE html>
+<html lang="en">
 <?php 
 
 	session_start();
@@ -10,9 +12,7 @@
 		header("Location: logout.php");
 	}
 ?>
-
-<!DOCTYPE html>
-<html lang="en">
+	
 <head>
 	<title>City Town</title>
 	<meta charset="utf-8">
@@ -62,6 +62,44 @@ h1{
     align-text:left;
 }
 
+#messages {
+			display:none;
+			background: #f1f1f1;
+			color: #000;
+			position: relative;
+			padding: 20px;
+			margin-top: 10px;
+	}
+
+	#messages p {
+			padding: 10px 35px;
+			font-size: 18px;
+	}
+
+	
+	/* Add a green text color and a checkmark when the requirements are right */
+	.valid {
+			color: green;
+	}
+
+	.valid:before {
+			position: relative;
+			left: -35px;
+			content: "✔";
+	}
+
+	/* Add a red text color and an "x" when the requirements are wrong */
+	.invalid {
+			color: red;
+	}
+
+	.invalid:before {
+			position: relative;
+			left: -35px;
+			content: "✖";
+	}
+
+
 </style>
 </head>
 <body style="overflow:hidden;">
@@ -69,7 +107,7 @@ h1{
 <!-- Top Bar -->
 <div class="w3-bar  w3-theme w3-large" >
   	<span> Welcome, <?php echo $currUserID;?> <a href="logout.php"><b>(logout)</b></a></span>
-
+				
  	 <span class="w3-bar-item w3-text-theme-d2 w3-right">City Town</span>
 	<span class="w3-bar-item w3-text-theme-d2 w3-left"></span>
 </div>
@@ -92,15 +130,15 @@ h1{
 
 
 <ul>
-
-  	<li><a class="active" href="BackendHome.php"><i class="fa fa-home"></i> HOME</a></li>
-	<li><a href="caseHistory.php"> <i class="fa fa-credit-card-alt"></i> CASE HISTORY</a></li>
-	<li><a href="cityTownConcerns2.php"><i class="fa fa-question"></i>  MY CONCERNS</a></li>
-	<li><a href="accountsettings2.php"><i class="fa fa-cog"></i>  ACCOUNT SETTINGS</a></li>
+  	<li><a class="active" href="alogin.php"><i class="fa fa-home"></i> HOME</a></li>
+	<li><a href="createUser.php"> <i class="fa fa-credit-card-alt"></i>  CREATE USER</a></li>
+	<li><a href="deleteUser.php"><i class="fa fa-question"></i>  DELETE USER</a></li>
+	<li><a href="updatePW.php"><i class="fa fa-cog"></i>  UPDATE PASSWORD</a></li>
 </ul>
 
 <!-- End  -->
 
+	
 
 <!-- Javascript for date -->
 <script>
@@ -115,26 +153,27 @@ document.getElementById("time").innerHTML = d.toDateString();
   
 <div class="w3-twothird" style="margin-left:300px">
 		
-	<div class="w3-container w3-card w3-white w3-margin-bottom">
-		<h2 class="w3-text-grey w3-padding-16"><i class="fa fa-dashboard fa-fw w3-margin-right w3-xxlarge w3-text-theme"></i>My Dashboard</h2>
-			<div class="w3-container">
-			<h5 class="w3-opacity"><b>Incoming Cases</b></h5>
-			<h6 class="w3-text-theme-d1"><i class="fa fa-calendar fa-fw w3-margin-right"></i><span class="w3-tag w3-theme w3-round">New</span>
-				<span class="badge">20</span></h6>
-					
-					<hr>
+
+		<div class="w3-container w3-card w3-white w3-margin-bottom">
+		<h2 class="w3-text-grey w3-padding-16"><i class="fa-fw w3-margin-right w3-xxlarge w3-text-theme"></i>Delete User</h2>
+				<form action="delete.php">
+		<fieldset>
+			<legend></legend>
+			
+
+			<p>Enter the following information </p>
+    			Username: <input type="text" placeholder="Enter username" name="user"><p>   				
+
+    		<br><br>
+
+    		<input type="submit" value="submit">
+			<button type="reset" value="Reset">Reset</button> 
+		</fieldset>
+	</form>
+								
+
 	</div>
-	<div class="w3-container">
-		<h5 class="w3-opacity"><b>Existing Form</b></h5>
-		<h6 class="w3-text-theme-d1"><i class="fa fa-calendar fa-fw w3-margin-right"></i>Started - Dec 2017<span class="w3-tag w3-theme w3-round">Current</span></h6>
-					
-					<hr>
-	</div>
-	<div class="w3-container">
-		<h5 class="w3-opacity"><b>Existing Concerns</b></h5>
-		<h6 class="w3-text-theme-d1"><i class="fa fa-calendar fa-fw w3-margin-right"></i>No Existing Concerns</h6>
-					
-	</div>
+	
 </div>
 
 			
