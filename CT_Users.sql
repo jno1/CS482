@@ -17,7 +17,7 @@ lName varchar(25) NOT NULL,
 email varchar(50) NOT NULL,
 phoneNumber varchar(15) NOT NULL,
 cellNumber varchar(15) NULL,
-dept_ID int(20) NOT NULL,
+dept_ID int(20),
 address varchar(100) NOT NULL,
 signature varchar(50) NOT NULL,
 dateSigned DATETIME NOT NULL,
@@ -61,9 +61,8 @@ Ephone3 varchar(15) NULL,
 appElecSig varchar(50) NOT NULL,
 PRIMARY KEY(formID),
 FOREIGN KEY(type_ID) REFERENCES typeOfForm(typeID),
-FOREIGN KEY(user_ID) REFERENCES frontEndUser(userID),
-FOREIGN KEY(dept_ID) REFERENCES department(deptID),
-FOREIGN KEY(reviewEmp) REFERENCES backEndUser(userID)
+FOREIGN KEY(user_ID) REFERENCES users(userID),
+FOREIGN KEY(dept_ID) REFERENCES department(deptID)
 );
 
 create table payments(
@@ -76,6 +75,7 @@ ccType varchar(30) NOT NULL,
 form_ID int(20) NOT NULL,
 amountPaid decimal(10, 2) NOT NULL,
 PRIMARY KEY(paymentId),
-FOREIGN KEY(user_ID) REFERENCES frontEndUser(userID),
+FOREIGN KEY(user_ID) REFERENCES users(userID),
 FOREIGN KEY(form_ID) REFERENCES forms(formID)
 );
+
