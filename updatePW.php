@@ -123,7 +123,7 @@ h1{
 <!-- Left Column -->
 <header class="w3-container w3-text-grey">
 
-    <h5><b><i class="fa fa-user-circle "></i> MY ACCOUNT</b></h5>
+    <h5><b><i class="fa fa-user-circle "></i> ADMINISTRATIVE ACCOUNT</b></h5>
 
  </header>
 
@@ -236,8 +236,14 @@ document.getElementById("time").innerHTML = d.toDateString();
 
     		<br><br>
 
-    		<input type="submit" value="submit">
+    		<input type="submit" onclick="alertMsg()" value="Submit">
 			<button type="reset" value="Reset">Reset</button> 
+			
+			<script>
+				function alertMsg(){
+					alert("Successfully updated user");
+				}
+			</script>
 		</fieldset>
 	</form>
 								

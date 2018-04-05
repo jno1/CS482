@@ -124,7 +124,7 @@ h1{
 <!-- Left Column -->
 <header class="w3-container w3-text-grey">
 
-    <h5><b><i class="fa fa-user-circle "></i> MY ACCOUNT</b></h5>
+    <h5><b><i class="fa fa-user-circle "></i> ADMINISTRATIVE ACCOUNT</b></h5>
 
  </header>
 
@@ -244,8 +244,14 @@ document.getElementById("time").innerHTML = d.toDateString();
 		Department ID: <input type="text" placeholder="Enter department id num" name="dept_ID"><p>
 
 		
-		<input type="submit" value="Submit">
+		<input type="submit" onclick="alertMsg()" value="Submit">
 		<button type="reset" value="Reset">Reset</button> 
+		
+		<script>
+			function alertMsg(){
+				alert("Successfully created user");
+			}
+		</script>
 	</fieldset>
 </form>
 
