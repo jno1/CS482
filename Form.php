@@ -264,17 +264,11 @@ document.getElementById("time").innerHTML = d.toDateString();
 									</div>
 									<p><center><b>NOTICE: It is a crime, punishable as a Class A misdemeanor, to knowingly make a false statement herein (Section 210. 45 New York State Penal Law)</b></center></p>
 
-				<button type="submit" onlick="alertMsg()" class="btn btn-primary">Submit</button>
+				<button type="submit" class="btn btn-primary">Submit</button>
 		</form>
 		</div>
 
 			</fieldset>
-			<script>
-				function alertMsg() {
-					alert("Your form has been submitted"
-	);
-				}
-			</script>
 	</div>
 	</body>
 		</html>
