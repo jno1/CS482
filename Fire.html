@@ -1,0 +1,181 @@
+<?php 
+	session_start();
+	if (isset($_SESSION['username']))
+	{
+		$currUserID = $_SESSION['username'];
+	}
+	else
+	{
+		header("Location: logout.php");
+	}
+?>
+
+<!DOCTYPE html>
+<html>
+<title>Fire Department</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-blue-grey.css">
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans'>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+html,body,h1,h2,h3,h4,h5 {font-family: "Quicksand", sans-serif}
+
+</style>
+<body class="w3-theme-l5">
+<!-- Top Bar -->
+<div class="w3-bar  w3-theme w3-large" >
+		<span> Welcome, <?php echo $currUserID;?> <a href="logout.php"><b>(logout)</b></a></span>
+
+ 	 <span class="w3-bar-item w3-text-theme-d2 w3-right">City Town</span>
+	<span class="w3-bar-item w3-text-theme-d2 w3-left"></span>
+</div>
+<!-- End of Top Bar -->
+
+<!-- Name and Date -->
+
+<div class="w3-col s8 w3-bar w3-text-grey" style="margin-left:5px">
+			<b><p id="time"></p></b>
+		</div>
+<!-- End  -->
+<!-- Javascript for date -->
+<script>
+var d = new Date();
+document.getElementById("time").innerHTML = d.toDateString();
+</script>
+<!-- End  -->
+
+<div>
+		<div class="w3-right-align"><h4>Fire Department Page</h4></div>
+	
+</div>
+
+<!-- Page Container -->
+<div class="w3-container w3-content" style="max-width:1400px;margin-top:80px">    
+	<!-- The Grid -->
+	<div class="w3-row">
+		<!-- Left Column -->
+		<div class="w3-col m3">
+			<!-- Profile -->
+			<div class="w3-card w3-round w3-white">
+				<div class="w3-container">
+				 <h4 class="w3-center">My Profile</h4>
+				
+				 <p><a class="active" href="BackendHome.php"><i class="fa fa-home w3-button w3-medium w3-block w3-theme-l1 w3-left-align"> HOME</i></a></p>
+				
+				 <p><a href="dropdown_BloodTypes.php"><i class="fa fa-credit-card-alt w3-button w3-block w3-theme-l1 w3-left-align"> CASE HISTORY</i></a></p>
+				
+				<p><a href="cityTownConcerns.php"><i  class="fa fa-question w3-button w3-block w3-theme-l1 w3-left-align"> CONCERNS</i></a></p>
+				 <p><a href="accountsettings.php"><i class="fa fa-cog w3-button w3-block w3-theme-l1 w3-left-align">ACCOUNT SETTINGS</i></a></p>
+				</div>
+			</div>
+			<br>
+			
+			
+			
+			<!-- Open Cases --> 
+			<div class="w3-card w3-round w3-white w3-hide-small">
+				<div class="w3-container">
+					<h4>Open Cases</h4>
+					<p>Case #2190</p>
+						<div class="w3-light-grey w3-round-xlarge w3-small">
+						<div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:0%">
+						<div class="w3-center w3-text-white">0%</div>
+					</div>
+					</div>
+				<p>Case #4590</p>
+					<div class="w3-light-grey w3-round-xlarge w3-small">
+					<div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:0%">
+					<div class="w3-center w3-text-white">0%</div>
+				</div>
+				</div>
+				</div>
+			</div>
+			<br>
+			
+			<!-- Alert Box -->
+			<div class="w3-container w3-display-container w3-round w3-theme-l4 w3-border w3-theme-border w3-margin-bottom w3-hide-small">
+				<span onclick="this.parentElement.style.display='none'" class="w3-button w3-theme-l3 w3-display-topright">
+					<i class="fa fa-remove"></i>
+				</span>
+				<p><strong>New Case!</strong></p>
+				<p>Case #2190 has been added to your cases.</p>
+			</div>
+		
+		<!-- End Left Column -->
+		</div>
+		
+		<!-- Middle Column -->
+		<div class="w3-col m7">
+		
+			<div class="w3-row-padding">
+				<div class="w3-col m12">
+					<div class="w3-card w3-round w3-white">
+						<div class="w3-container w3-padding">
+							<h6 class="w3-opacity">Search for Cases</h6>
+							<form method="get" action="FormSearch.php">
+							<p contenteditable="true" class="w3-border w3-padding" type= "text" name= "case"></p>
+							<button type="button" class="w3-button w3-theme"><i class="fa fa-pencil"></i>  Search</button> 
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<div class="w3-container w3-card w3-white w3-round w3-margin"><br>
+				
+				<span class="w3-right w3-opacity">1 min</span>
+				<h4>John Doe</h4><br>
+				<hr class="w3-clear">
+				<p>Test1</p>
+					<div class="w3-row-padding" style="margin:0 -16px">
+						<div class="w3-half">
+							
+						</div>
+						<div class="w3-half">
+						</div>
+				</div>
+				<button type="button" class="w3-button w3-theme-d1 w3-margin-bottom"><i class="fa fa-thumbs-up"></i>  Like</button> 
+				<button type="button" class="w3-button w3-theme-d2 w3-margin-bottom"><i class="fa fa-comment"></i>  Comment</button> 
+			</div>
+			
+			<div class="w3-container w3-card w3-white w3-round w3-margin"><br>
+				
+				<span class="w3-right w3-opacity">16 min</span>
+				<h4>Jane Doe</h4><br>
+				<hr class="w3-clear">
+				<p>Test 2</p>
+				<button type="button" class="w3-button w3-theme-d1 w3-margin-bottom"><i class="fa fa-thumbs-up"></i>  Like</button> 
+				<button type="button" class="w3-button w3-theme-d2 w3-margin-bottom"><i class="fa fa-comment"></i>  Comment</button> 
+			</div>  
+
+			<div class="w3-container w3-card w3-white w3-round w3-margin"><br>
+				
+				<span class="w3-right w3-opacity">32 min</span>
+				<h4>Angie Jane</h4><br>
+				<hr class="w3-clear">
+				<p>Have you seen this?</p>
+				
+				<p>Test 3</p>
+				<button type="button" class="w3-button w3-theme-d1 w3-margin-bottom"><i class="fa fa-thumbs-up"></i>  Like</button> 
+				<button type="button" class="w3-button w3-theme-d2 w3-margin-bottom"><i class="fa fa-comment"></i>  Comment</button> 
+			</div> 
+			
+		<!-- End Middle Column -->
+		</div>
+		
+	
+		</div>
+		
+	<!-- End Grid -->
+	</div>
+	
+<!-- End Page Container -->
+</div>
+<br>
+
+
+ 
+
+</body>
+</html> 
