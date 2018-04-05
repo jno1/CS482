@@ -119,10 +119,24 @@ document.getElementById("time").innerHTML = d.toDateString();
 		
 
 		<div class="w3-container w3-card w3-white w3-margin-bottom">
-		<h2 class="w3-text-grey w3-padding-16"><i class="fa fa-cog fa-fw w3-margin-right w3-xxlarge w3-text-theme"></i>Account settings</h2>
-			<li><a href="changepasswordHTML.php"><b>Change Password</b></h5>
-								
-			<li><a href="editpersonalinfo.php"><b>Edit Personal Information</b></h5>
+		<h2 class="w3-text-grey w3-padding-16"><i class="fa fa-cog fa-fw w3-margin-right w3-xxlarge w3-text-theme"></i>Edit Personal Information</h2>
+		<form action="editResident.php">
+		<fieldset>
+			<legend></legend>
+			First Name: <input type="text" placeholder="Enter your first name" name="fname"><p>
+			Last Name: <input type="text" placeholder="Enter your last name" name="lname"><p>
+			Phone Number: <input type="text" placeholder="phone number xxx-xxx-xxxx" name="phoneNum" size="22"><p>
+			Cell Number: <input type="text" placeholder="cell number xxx-xxx-xxxx" name="cellNum" size="22"><p>
+			Email: <input type="text" placeholder="Enter your email address" name="email"><p>
+			Address: <input type="text" placeholder="Enter your address" name="address" size="50"><p>
+			
+			<br><br>
+
+			    		<input type="submit" value="submit">
+						<button type="reset" value="Reset">Reset</button> 
+					</fieldset>
+				</form>
+
 	</div>
 	
 </div>

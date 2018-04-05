@@ -93,10 +93,10 @@ h1{
 
 <ul>
 
-  	<li><a class="active" href="FrontendHome.php"><i class="fa fa-home"></i> HOME</a></li>
-	<li><a href="paymentpageHTML.php"> <i class="fa fa-credit-card-alt"></i> MY PAYMENTS</a></li>
-	<li><a href="cityTownConcerns.php"><i class="fa fa-question"></i>  MY CONCERNS</a></li>
-	<li><a href="accountsettings.php"><i class="fa fa-cog"></i>  ACCOUNT SETTINGS</a></li>
+  	<li><a class="active" href="BackendHome.php"><i class="fa fa-home"></i> HOME</a></li>
+	<li><a href="caseHistory.php"> <i class="fa fa-credit-card-alt"></i> CASE HISTORY</a></li>
+	<li><a href="cityTownConcerns2.php"><i class="fa fa-question"></i>  MY CONCERNS</a></li>
+	<li><a href="accountsettings2.php"><i class="fa fa-cog"></i>  ACCOUNT SETTINGS</a></li>
 </ul>
 
 <!-- End  -->
@@ -119,10 +119,24 @@ document.getElementById("time").innerHTML = d.toDateString();
 		
 
 		<div class="w3-container w3-card w3-white w3-margin-bottom">
-		<h2 class="w3-text-grey w3-padding-16"><i class="fa fa-cog fa-fw w3-margin-right w3-xxlarge w3-text-theme"></i>Account settings</h2>
-			<li><a href="changepasswordHTML.php"><b>Change Password</b></h5>
-								
-			<li><a href="editpersonalinfo.php"><b>Edit Personal Information</b></h5>
+		<h2 class="w3-text-grey w3-padding-16"><i class="fa fa-cog fa-fw w3-margin-right w3-xxlarge w3-text-theme"></i>Edit Personal Information</h2>
+		<form action="editResident2.php">
+		<fieldset>
+			<legend></legend>
+			First Name: <input type="text" placeholder="Enter your first name" name="fname"><p>
+			Last Name: <input type="text" placeholder="Enter your last name" name="lname"><p>
+			Phone Number: <input type="text" placeholder="phone number xxx-xxx-xxxx" name="phoneNum" size="22"><p>
+			Email: <input type="text" placeholder="Enter your email address" name="email"><p>
+			Department ID: <input type="text" placeholder="Enter department id num" name="dept_ID"><p>
+			
+			
+			<br><br>
+
+						<input type="submit" value="submit">
+						<button type="reset" value="Reset">Reset</button> 
+					</fieldset>
+				</form>
+
 	</div>
 	
 </div>

@@ -8,27 +8,19 @@
 	$email = filter_var($_POST['email'], FILTER_SANITIZE_STRING);
 	$deptID = filter_var($_POST['dept_ID'], FILTER_SANITIZE_STRING);
 
-	if(!empty($username) && !empty($password) && !empty($passConfirm) && 
-		!empty($fName) && !empty($lName) && !empty($phoneNum) && !empty($email) &&
-		!empty($deptID)) 
+	if(!empty($username) && !empty($password) && !empty($passConfirm) && !empty($fName) && !empty($lName) && !empty($phoneNum) && !empty($email) && !empty($deptID))
 	{
-
-
-		if($password == $passConfirm  && $password= preg_match( '/[A-Z]/', $password ) && # uppercase char 
-			    preg_match( '/[a-z]/', $password ) && # lowercase char
-				preg_match( '/\d/', $password ) &&    # digit
-				(strlen($password) > 8))
+		if($password == $passConfirm && $password= preg_match( '/[A-Z]/', $password ) && # uppercase char 
+				    preg_match( '/[a-z]/', $password ) && # lowercase char
+					preg_match( '/\d/', $password ) &&    # digit
+					(strlen($password) > 8))
 		{
-		
-
 			$host = "localhost";
 			$dbusername = "root";
 			$dbpassword = "root";
 			$dbname = "CT_Users";
 
-
 			$conn = new mysqli($host, $dbusername, $dbpassword, $dbname);
-
 
 			if(mysqli_connect_error())
 			{
@@ -36,31 +28,23 @@
 			}
 			else
 			{
-			
-
 				$result = $conn->query("SELECT userName, pass FROM users WHERE userName = '$username' AND pass = '$password'");
-
 
 				if($result->num_rows != 0)
 					echo "User information is already used!";
 				else
 				{
-				
-
 					$securePass = password_hash($password,PASSWORD_DEFAULT, ['cost' => 10]);
-	                $sql = "INSERT INTO users (userName, pass, fName, lName, email, phoneNumber, deptID) VALUES ('$username', '$securePass', '$fName', '$lName', '$email', '$phoneNum', '$deptID')";
+					$sql = "INSERT INTO users (userName, pass, fName, lName, email, phoneNumber, dept_ID) VALUES ('$username', '$securePass', '$fName', '$lName', '$email', '$phoneNum', '$deptID')";
+					
 				}
 
 				if($conn->query($sql))
 				{
-				
-
-					echo "You have successfully created $fName $lName."; 
+					echo "You have successfully registered. Welcome to City Town $fName $lName.";
 				}
 				else
 				{
-				
-
 					echo "Error: ".$sql."<br>".$conn->error;
 				}
 
@@ -77,10 +61,11 @@
 
 	else
 	{
-		echo "All required fields must be filled out";
+		echo "All fields must be filled out";
 		die();
 	}
 
-?>
+	?>
+
 
 	

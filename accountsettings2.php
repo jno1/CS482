@@ -122,7 +122,7 @@ document.getElementById("time").innerHTML = d.toDateString();
 		<h2 class="w3-text-grey w3-padding-16"><i class="fa fa-cog fa-fw w3-margin-right w3-xxlarge w3-text-theme"></i>Account settings</h2>
 			<li><a href="changepasswordHTML2.php"><b>Change Password</b></h5>
 								
-			<li><a href="editpersonalinfo2.html"><b>Edit Personal Information</b></h5>
+			<li><a href="editpersonalinfo2.php"><b>Edit Personal Information</b></h5>
 	</div>
 	
 </div>

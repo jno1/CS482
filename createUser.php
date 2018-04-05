@@ -157,102 +157,98 @@ document.getElementById("time").innerHTML = d.toDateString();
 
 		<div class="w3-container w3-card w3-white w3-margin-bottom">
 		<h2 class="w3-text-grey w3-padding-16"><i class="fa-fw w3-margin-right w3-xxlarge w3-text-theme"></i>Create User</h2>
-				<form action="AddUser.php">
+				<form action="AddUser.php" method="POST">
 		<fieldset>
 			<legend></legend>
 			
 
-			<p>Enter the following information </p>
-    			Username: <input type="text" placeholder="Enter username" name="user"><p>
-	Password: <input type="password" id="psw" placeholder="Enter password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" name="pass" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"><p>
-
-	<div id="messages">
-		<h3>Password must contain the following:</h3>
-		<p id="letters" class="invalid">A <b>lowercase</b> letter</p>
-		<p id="capitals" class="invalid">A <b>capital (uppercase)</b> letter</p>
-		<p id="numbers" class="invalid">A <b>number</b></p>
-		<p id="lengths" class="invalid">Minimum <b>8 characters</b></p>
-	</div>
-
-	<script>
-	var myInputs = document.getElementById("psw");
-	var letters = document.getElementById("letters");
-	var capitals = document.getElementById("capitals");
-	var numbers = document.getElementById("numbers");
-	var lengths = document.getElementById("lengths");
-
-	// When the user clicks on the password field, show the message box
-	myInputs.onfocus = function() {
-		document.getElementById("messages").style.display = "block";
-	}
-
-	// When the user clicks outside of the password field, hide the message box
-	myInputs.onblur = function() {
-		document.getElementById("messages").style.display = "none";
-	}
-
-	// When the user starts to type something inside the password field
-	myInputs.onkeyup = function() {
-		// Validate lowercase letters
-		var lowerCaseLetter = /[a-z]/g;
-		if(myInputs.value.match(lowerCaseLetter)) {  
-			letters.classList.remove("invalid");
-			letters.classList.add("valid");
-		} else {
-			letters.classList.remove("valid");
-			letters.classList.add("invalid");
-		}
+		Username: <input type="text" placeholder="Enter username" name="user"><p>
+		Password: <input type="password" id="psw" placeholder="Enter password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" name="pass" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"><p>
 	
-		// Validate capital letters
-		var upperCaseLetter = /[A-Z]/g;
-		if(myInputs.value.match(upperCaseLetter)) {  
-			capitals.classList.remove("invalid");
-			capitals.classList.add("valid");
-		} else {
-			capitals.classList.remove("valid");
-			capitals.classList.add("invalid");
+		<div id="messages">
+			<h3>Password must contain the following:</h3>
+			<p id="letters" class="invalid">A <b>lowercase</b> letter</p>
+			<p id="capitals" class="invalid">A <b>capital (uppercase)</b> letter</p>
+			<p id="numbers" class="invalid">A <b>number</b></p>
+			<p id="lengths" class="invalid">Minimum <b>8 characters</b></p>
+		</div>
+	
+		<script>
+		var myInputs = document.getElementById("psw");
+		var letters = document.getElementById("letters");
+		var capitals = document.getElementById("capitals");
+		var numbers = document.getElementById("numbers");
+		var lengths = document.getElementById("lengths");
+
+		// When the user clicks on the password field, show the message box
+		myInputs.onfocus = function() {
+			document.getElementById("messages").style.display = "block";
 		}
 
-		// Validate numbers
-		var number = /[0-9]/g;
-		if(myInputs.value.match(number)) {  
-			numbers.classList.remove("invalid");
-			numbers.classList.add("valid");
-		} else {
-			numbers.classList.remove("valid");
-			numbers.classList.add("invalid");
+		// When the user clicks outside of the password field, hide the message box
+		myInputs.onblur = function() {
+			document.getElementById("messages").style.display = "none";
 		}
-	
-		// Validate length
-		if(myInputs.value.length >= 8) {
-			lengths.classList.remove("invalid");
-			lengths.classList.add("valid");
-		} else {
-			lengths.classList.remove("valid");
-			lengths.classList.add("invalid");
-		}
-	}
-	</script>									
-	Confirm Password: <input type="password" id="passConfirm" placeholder="Re-enter password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"name="passConfirm" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"><p>
-	
-	
-	
+
+		// When the user starts to type something inside the password field
+		myInputs.onkeyup = function() {
+			// Validate lowercase letters
+			var lowerCaseLetter = /[a-z]/g;
+			if(myInputs.value.match(lowerCaseLetter)) {  
+				letters.classList.remove("invalid");
+				letters.classList.add("valid");
+			} else {
+				letters.classList.remove("valid");
+				letters.classList.add("invalid");
+			}
 		
-	First Name: <input type="text" placeholder="Enter your first name" name="fname"><p>
-	Last Name: <input type="text" placeholder="Enter your last name" name="lname"><p>
-	Phone Number: <input type="text" placeholder="phone number xxx-xxx-xxxx" name="phoneNum" size="22"><p>
-	Email: <input type="text" placeholder="Enter email address" name="email"><p>
-	Department ID: <input type="text" placeholder="Enter department id num" name="deptID"><p>    				
+			// Validate capital letters
+			var upperCaseLetter = /[A-Z]/g;
+			if(myInputs.value.match(upperCaseLetter)) {  
+				capitals.classList.remove("invalid");
+				capitals.classList.add("valid");
+			} else {
+				capitals.classList.remove("valid");
+				capitals.classList.add("invalid");
+			}
 
+			// Validate numbers
+			var number = /[0-9]/g;
+			if(myInputs.value.match(number)) {  
+				numbers.classList.remove("invalid");
+				numbers.classList.add("valid");
+			} else {
+				numbers.classList.remove("valid");
+				numbers.classList.add("invalid");
+			}
+		
+			// Validate length
+			if(myInputs.value.length >= 8) {
+				lengths.classList.remove("invalid");
+				lengths.classList.add("valid");
+			} else {
+				lengths.classList.remove("valid");
+				lengths.classList.add("invalid");
+			}
+		}
+		</script>									
+		Confirm Password: <input type="password" id="passConfirm" placeholder="Re-enter password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"name="passConfirm" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"><p>
+		
+		
+		
+			
+		First Name: <input type="text" placeholder="Enter your first name" name="fname"><p>
+		Last Name: <input type="text" placeholder="Enter your last name" name="lname"><p>
+		Phone Number: <input type="text" placeholder="phone number xxx-xxx-xxxx" name="phoneNum" size="22"><p>
+		Email: <input type="text" placeholder="Enter email address" name="email"><p>
+		Department ID: <input type="text" placeholder="Enter department id num" name="dept_ID"><p>
 
+		
+		<input type="submit" value="Submit">
+		<button type="reset" value="Reset">Reset</button> 
+	</fieldset>
+</form>
 
-
-    		<br><br>
-
-    		<input type="submit" value="submit">
-			<button type="reset" value="Reset">Reset</button> 
-		</fieldset>
-	</form>
 								
 
 	</div>
