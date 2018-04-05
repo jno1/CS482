@@ -94,7 +94,7 @@ h1{
 
 <ul>
   	<li><a class="active" href="FrontendHome.html"><i class="fa fa-home"></i> HOME</a></li>
-	<li><a href="dropdown_BloodTypes.php"> <i class="fa fa-credit-card-alt"></i>  MY PAYMENTS</a></li>
+	<li><a href="paymenypagesHTML.php"> <i class="fa fa-credit-card-alt"></i>  MY PAYMENTS</a></li>
 	<li><a href="cityTownConcerns.php"><i class="fa fa-question"></i>  MY CONCERNS</a></li>
 	<li><a href="accountsettingsHTML.php"><i class="fa fa-cog"></i>  ACCOUNT SETTINGS</a></li>
 </ul>
@@ -130,6 +130,15 @@ document.getElementById("time").innerHTML = d.toDateString();
     		Last Name: <input type="last" name="last" placeholder=""> <br><br>
     		Card Number: <input type="card" name="card" placeholder=""> <br><br>
     		security code: <input type="ss" name="ss" placeholder=""> <br><br>
+    		card type: 
+    			<select name='cardtype' id='cardtype'>
+   				<option value=''>type</option>
+   				<option value='01'>visa</option>
+   				<option value='02'>mastercard</option>
+    			<option value='03'>american express</option>
+    		
+			</select> <br><br>
+
     		Card Expiration:
 			<select name='expireMM' id='expireMM'>
    				<option value=''>Month</option>
