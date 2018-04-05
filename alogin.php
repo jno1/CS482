@@ -84,7 +84,7 @@ h1{
 
 <header class="w3-container w3-text-grey">
 
-    <h5><b><i class="fa fa-user-circle "></i> MY ACCOUNT</b></h5>
+    <h5><b><i class="fa fa-user-circle "></i> ADMINISTRATIVE ACCOUNT</b></h5>
 
 
   </header>
@@ -112,21 +112,89 @@ document.getElementById("time").innerHTML = d.toDateString();
 		
 	<div class="w3-container w3-card w3-white w3-margin-bottom">
 		<h2 class="w3-text-grey w3-padding-16"><i class="fa fa-dashboard fa-fw w3-margin-right w3-xxlarge w3-text-theme"></i>My Dashboard</h2>
-			<div class="w3-container">
-			<h5 class="w3-opacity"> <a href="Form.php"><b>Create a New Form</b></h5></a>
-			<h6 class="w3-text-theme-d1"><i class="fa fa-calendar fa-fw w3-margin-right"></i><span class="w3-tag w3-theme w3-round">New</span></h6>
+			<fieldset>
+				<legend></legend>
+				<p>Current Users </p>
+				<?php
+				if (isset($_SESSION['username']))
+						{
+							$currUserID = $_SESSION['username'];
+						}
+						else
+						{
+							header("Location: logout.php");
+						}
+						$server= 'localhost';
+						$username = 'root';
+						$dbpassword = 'root';
+						$dbname = "CT_Users";
+						$conn = new mysqli($server, $username, $dbpassword, $dbname);
+						
+						if (mysqli_connect_errno()) 
+						{ 
+							exit;
+						}
+						
+						$status = $_GET['status'];
+						$type = $_GET['type'];
+						$sql1="select dept_ID
+										from users
+											where userName = '$currUserID' " ;
+							$result1 = $conn->query($sql1) or die('Could not run query: '.$conn->error);
+							$row1 = $result1->fetch_assoc();
+							$dept = $row1["dept_ID"];		
+						$sql2="select deptName
+										from department
+											where deptID = '$dept'" ;
+							$result2 = $conn->query($sql2) or die('Could not run query: '.$conn->error);
+							$row2 = $result2->fetch_assoc();
+							$deptname = $row2["deptName"];						
 					
-					<hr>
-	</div>
-	<div class="w3-container">
-		<h5 class="w3-opacity"><b>Existing Form</b></h5>
-		<h6 class="w3-text-theme-d1"><i class="fa fa-calendar fa-fw w3-margin-right"></i>Started - Dec 2017<span class="w3-tag w3-theme w3-round">Current</span></h6>
-			
-					<hr>
-	</div>
-	<div class="w3-container">
-		<h5 class="w3-opacity"><b>Existing Concerns</b></h5>
-		<h6 class="w3-text-theme-d1"><i class="fa fa-calendar fa-fw w3-margin-right"></i>No Existing Concerns</h6>
+							
+						
+						
+						//Create query
+						$sqlEmp1="select lName, fName, userName, email, phoneNumber, cellNumber
+										from users
+											Order By lName, fName;";
+						//Execute query
+						$result = $conn->query($sqlEmp1) or die('Could not run query: '.$conn->error);
+
+						if ($result->num_rows > 0) {
+							// output data of each row
+							//echo "<h3> open forms ".$ingtypeName."  </h3>";
+							//echo " <table border='1'> ";
+							//echo "<tr>
+							//		<th> formtype </th>
+							//		<th> form ID </th>
+							//		<th> submission data </th>
+
+							//	  </tr>";
+							while($row = $result->fetch_assoc()) {
+								$formid = $row['$formid'];
+
+								echo "<tr>
+								
+									<p>Name: <td>".$row["lName" ]. "</td>, <td>".$row["fName" ]. "</td> </p> 
+									<p>Username: <td>". $row["userName"]. "</td></p>
+									<p>Email: <td>". $row["email"]. "</td></p>
+									<p>Phone Number: <td>". $row["phoneNumber"]. "</td></p>
+
+									<p><td>"."------------------------------"."</td></p>
+
+									
+								</tr>";
+							}
+						} else {
+								echo "0 results";
+						}
+						$conn->close();
+
+						?>
+	    		
+
+			</fieldset>
+		</form>
 					
 	</div>
 </div>
