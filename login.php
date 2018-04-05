@@ -49,6 +49,11 @@ if(isset($_POST['username']))
 					{
 						$redirect = "BackendHome.php";
 					}
+					
+					if($result2 == true && $deptID == 18)
+					{
+						$redirect = "alogin.php";
+					}
 
 					return $redirect;
 
