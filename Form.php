@@ -22,7 +22,7 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 <style>
 	body{font-family: 'Quicksand', sans-serif;}
 	.w3-theme {color:#fff !important;background-color:#024575 !important}
@@ -264,12 +264,19 @@ document.getElementById("time").innerHTML = d.toDateString();
 									</div>
 									<p><center><b>NOTICE: It is a crime, punishable as a Class A misdemeanor, to knowingly make a false statement herein (Section 210. 45 New York State Penal Law)</b></center></p>
 
-				<button type="submit" class="btn btn-primary">Submit</button>
-		</form>
-		</div>
+				<button type="submit" onlick="alertMsg()" class="btn btn-primary">Submit</button>
 
-			</fieldset>
-	</div>
-	</body>
-		</html>
+		</form>
+		
+</div>
+</fieldset>
+<script>
+	function alertMsg() {
+		alert("Your form has been submitted");
+	}
+</script>
+</div>
+
+</body>
+</html>
 
