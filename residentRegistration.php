@@ -52,7 +52,7 @@ if(!empty($username) && !empty($password) && !empty($passConfirm) &&
 			
 
 				$securePass = password_hash($password,PASSWORD_DEFAULT, ['cost' => 10]);
-                $sql = "INSERT INTO users (userName, pass, fName, lName, questions, email, phoneNumber, cellNumber, address) VALUES ('$username', '$securePass', '$fName', '$lName', '$secQuest', '$email', '$phoneNum', '$cellNum', '$Address')";
+                $sql = "INSERT INTO users (userName, pass, fName, lName, secQuest, email, phoneNumber, cellNumber, address) VALUES ('$username', '$securePass', '$fName', '$lName', '$secQuest', '$email', '$phoneNum', '$cellNum', '$Address')";
 			}
 
 			if($conn->query($sql))
