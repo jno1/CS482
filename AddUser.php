@@ -1,4 +1,6 @@
-<?php	
+<?php
+	include ("dbConnect.php");
+	
 	$username = filter_var($_POST['user'], FILTER_SANITIZE_STRING);
 	$password = filter_var($_POST['pass'], FILTER_SANITIZE_STRING);
 	$passConfirm = filter_var($_POST['passConfirm'], FILTER_SANITIZE_STRING);
@@ -15,19 +17,7 @@
 					preg_match( '/\d/', $password ) &&    # digit
 					(strlen($password) > 8))
 		{
-			$host = "localhost";
-			$dbusername = "root";
-			$dbpassword = "root";
-			$dbname = "CT_Users";
-
-			$conn = new mysqli($host, $dbusername, $dbpassword, $dbname);
-
-			if(mysqli_connect_error())
-			{
-				die('Connect Error('.mysqli_connect_errno().')'.mysql_error());
-			}
-			else
-			{
+			
 				$result = $conn->query("SELECT userName, pass FROM users WHERE userName = '$username' AND pass = '$password'");
 
 				if($result->num_rows != 0)
@@ -48,7 +38,7 @@
 				}
 
 				$conn->close();
-			}
+			
 		}
 
 		else

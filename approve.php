@@ -93,8 +93,8 @@ h1{
 
 <ul>
 
-  	<li><a class="active" href="Frontendhome.php"><i class="fa fa-home"></i> HOME</a></li>
-	<li><a href="dropdown_BloodTypes.php"> <i class="fa fa-credit-card-alt"></i> CASE HISTORY</a></li>
+  	<li><a class="active" href="Police.html"><i class="fa fa-home"></i> HOME</a></li>
+	<li><a href="casehistoryhtml.php"> <i class="fa fa-credit-card-alt"></i> CASE HISTORY</a></li>
 	<li><a href="cityTownConcerns.php"><i class="fa fa-question"></i>  MY CONCERNS</a></li>
 	<li><a href="accountsettings.php"><i class="fa fa-cog"></i>  ACCOUNT SETTINGS</a></li>
 </ul>
@@ -120,12 +120,15 @@ document.getElementById("time").innerHTML = d.toDateString();
 
 		<div class="w3-container w3-card w3-white w3-margin-bottom">
 		<h2 class="w3-text-grey w3-padding-16"><i class="fa fa-cog fa-fw w3-margin-right w3-xxlarge w3-text-theme"></i>Account settings</h2>
-			<b>Change Password</b>
+			<b>Case History</b>
+	
 		<?php
 		session_start();
 		if (isset($_SESSION['username']))
 		{
 			$currUserID = $_SESSION['username'];
+			//$formid = $_SESSION['username'];
+
 		}
 		else
 		{
@@ -133,59 +136,72 @@ document.getElementById("time").innerHTML = d.toDateString();
 		}
 		include ("dbConnect.php");
 
-		
 
-		$oldpass = $_GET['oldpassword'];
-		$newpass = $_GET['password'];
-		$comfpass = $_GET['password1'];
-	
-		
+		$formid = $_GET['var'];
 
-		if($newpass==$comfpass) {
-			$sqlEmp=("select * 
-						from users 
-							where userName='$currUserID' "); //currUserID
-			$result = $conn->query($sqlEmp) or die('Could not run query: '.$conn->error);
-				$row = $result->fetch_assoc();
-				$hashPass = $row["pass"];
-				$dehash = password_verify($oldpass, $hashPass);
-				if ($dehash==true) {
-					$hashPass1 = password_hash($comfpass, PASSWORD_DEFAULT, ['cost' => 10]);
-					$sql=("UPDATE users 
-							Set pass = '" .$hashPass1.
-								"' WHERE userName ='$currUserID' ");					
-					if ($conn->query($sql) == TRUE ) {
-		    			echo "update successfully";
-						$redirect = "changepasswordhtml.php";
-						header('Location:'.$redirect);
-		    
-					} 
-				else {
-		    		echo "Error: " . $sql . "<br>" . $conn->error;
+		//Create query
+		//$formid = $Session["form"];
+		//echo $row['formID'];
+		$sql1="select dept_ID
+						from users
+							where userName = '$currUserID' " ;
+			$result1 = $conn->query($sql1) or die('Could not run query: '.$conn->error);
+			$row1 = $result1->fetch_assoc();
+			$deptid = $row1["dept_ID"];
 
-				}
-		
-			}
-	
-		
-			else{
-				echo "inccorect password";
-			}
-		//}
-	}
-		
-	else {
-		
-		echo "fields did not match";
+		$sqlEmp1="select *
+						from forms
+							where formID = '$formid'  " ;
+		//Execute query
+		$result = $conn->query($sqlEmp1) or die('Could not run query: '.$conn->error);
 
-		
-	}
-		
 
-	$conn->close();
+			// output data of each row
+			//echo "<h3> open forms ".$ingtypeName."  </h3>";
+			//echo " <table border='1'> ";
+			//echo "<tr>
+			//		<th> formtype </th>
+			//		<th> form ID </th>
+			//		<th> submission data </th>
 
-	?>
-			<br><br>
+			//	  </tr>";
+			$row = $result->fetch_assoc();
+				echo "<tr>
+					<p><td>"."------------------------------"."</td></p>
+					<p><td>"."Name                      : ".$row["fname"]." ". $row["lname"]. "</td></p>
+					<p><td>"."Address                   : ". $row["address"]. "</td></p>
+					<p><td>"."Alarm Address             : ". $row["AlarmAd"]. "</td></p>
+					<p><td>"."Alerting device           : ". $row["AD"]. "</td></p>
+					<p><td>"."Type of alarm             : ". $row["TA"]. "</td></p>
+					<p><td>"."local ordinance compliance: ". $row["LO"]. "</td></p>
+					<p><td>"."Central Station Alarm     : ". $row["CS"]. "</td></p>
+					<p><td>"."Alarm Company Name        : ". $row["ACname"]. "</td></p>
+					<p><td>"."Alarm Company Address     : ". $row["ACaddress"]. "</td></p>
+					<p><td>"."Alarm Company Telephone   : ". $row["ACphone"]. "</td></p>
+					<p><td>"."1 Emergancy Contact Name  : ". $row["Ename1"]. "</td></p>
+					<p><td>"."1 Emergancy Contact phone : ". $row["Ephone1"]. "</td></p>
+					<p><td>"."2 Emergancy Contact Name  : ". $row["Ename2"]. "</td></p>
+					<p><td>"."2 Emergancy Contact phone : ". $row["Ephone2"]. "</td></p>
+					<p><td>"."3 Emergancy Contact Name  : ". $row["Ename3"]. "</td></p>
+					<p><td>"."3 Emergancy Contact phone : ". $row["Ephone3"]. "</td></p>
+					
+					<p><td>APPROVED</a></td></p>
+					</tr>";
+		$sum1 = $row["totaldepts"];
+		$sum1=$sum1-1;
+		$sqlEmp2="UPDATE formapproval set state ='approved' where form_ID = '$formid' AND dept_ID = '$deptid'";
+	//	//Execute query
+		$result2 = $conn->query($sqlEmp2) or die('Could not run query: '.$conn->error);				
+	//		
+		$sqlEmp3="UPDATE forms set totaldepts='$sum1' where formID = '$formid'";
+	//	//Execute query
+		$result3 = $conn->query($sqlEmp3) or die('Could not run query: '.$conn->error);				
+			
+			
+		$conn->close();
+
+		?>
+				<br><br>
 		</fieldset>
 	</form>
 								

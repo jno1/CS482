@@ -22,11 +22,10 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 <style>
 	body{font-family: 'Quicksand', sans-serif;}
 	.w3-theme {color:#fff !important;background-color:#024575 !important}
-
 	.w3-text-theme-d1 {color:#024575 !important}
 	.w3-text-theme-d2 {color:#e9f5ff !important}
 	.w3-hover-text-theme-d1 {color: #e9f5ff !important}
@@ -42,28 +41,23 @@ ul {
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
    
 }
-
 li a {
     display: block;
     color:#666666;
     padding: 16px 4px;
     text-decoration: none;
 }
-
 li a.active {
     background-color:#024575;
     color: white;
 }
-
 li a:hover:not(.active) {
     background-color: #024575 ;
     color: white;
 }
-
 h1{
     align-text:left;
 }
-
 </style>
 </head>
 <body style="overflow:hidden;">
@@ -111,7 +105,7 @@ document.getElementById("time").innerHTML = d.toDateString();
 	  <fieldset>
 		 <h2>ALARM USER PERMIT APPLICATION</h2>
 			<p><b>APPLICANT - owner or tenant of record</b></p>
-			<form id="form" method="post" action="Formdb.php" role="form">
+			<form id="form" method="post" action="Formdba.php" role="form">
 			
 				<div class="form-group">
 					<label for="fname">First Name:</label>
@@ -264,12 +258,18 @@ document.getElementById("time").innerHTML = d.toDateString();
 									</div>
 									<p><center><b>NOTICE: It is a crime, punishable as a Class A misdemeanor, to knowingly make a false statement herein (Section 210. 45 New York State Penal Law)</b></center></p>
 
-				<button type="submit" class="btn btn-primary">Submit</button>
+				<button type="submit" onclick="alertMsg()" class="btn btn-primary">Submit</button>
+
 		</form>
-		</div>
+		
+</div>
+</fieldset>
+<script>
+	function alertMsg() {
+		alert("Your form has been submitted");
+	}
+</script>
+</div>
 
-			</fieldset>
-	</div>
-	</body>
-		</html>
-
+</body>
+</html>

@@ -1,4 +1,5 @@
 <?php
+include ("dbConnect.php");
 
 $fName = filter_var($_POST['first'], FILTER_SANITIZE_STRING);
 $lName = filter_var($_POST['last'], FILTER_SANITIZE_STRING);
@@ -14,15 +15,6 @@ if(!empty($fName) && !empty($lName) && !empty($user) && !empty($newPass) && !emp
             preg_match( '/\d/', $newpass ) &&    # digit
             (strlen($newpass) > 8))
     {
-        $server= 'localhost';
-        $username = 'root';
-        $dbpassword = 'root';
-        $dbname = 'CT_Users';
-
-        $db = new mysqli($server, $username, $dbpassword, $dbname);
-
-        if (mysqli_connect_errno()) 
-            exit;
 
         $hashPass = password_hash($newPass, PASSWORD_DEFAULT, ['cost' => 10]);
 
@@ -32,8 +24,6 @@ if(!empty($fName) && !empty($lName) && !empty($user) && !empty($newPass) && !emp
         else
             echo "There was a problem updating $fName $lName 's account";
             
-
-        $db->close();
     }
 
     else

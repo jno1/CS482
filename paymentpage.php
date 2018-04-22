@@ -82,10 +82,10 @@ h1{
 
 
 <ul>
-  	<li><a class="active" href="FrontendHome.html"><i class="fa fa-home"></i> HOME</a></li>
-	<li><a href="paymenypagesHTML.php"> <i class="fa fa-credit-card-alt"></i>  MY PAYMENTS</a></li>
+  	<li><a class="active" href="FrontendHome.php"><i class="fa fa-home"></i> HOME</a></li>
+	<li><a href="paymentpagesHTML.php"> <i class="fa fa-credit-card-alt"></i>  MY PAYMENTS</a></li>
 	<li><a href="cityTownConcerns.php"><i class="fa fa-question"></i>  MY CONCERNS</a></li>
-	<li><a href="accountsettingsHTML.php"><i class="fa fa-cog"></i>  ACCOUNT SETTINGS</a></li>
+	<li><a href="accountsettings.php"><i class="fa fa-cog"></i>  ACCOUNT SETTINGS</a></li>
 </ul>
 
 <!-- End  -->
@@ -123,16 +123,8 @@ document.getElementById("time").innerHTML = d.toDateString();
 		{
 			header("Location: logout.php");
 		}
-		$server= 'localhost';
-		$username = 'root';
-		$dbpassword = 'root';
-		$dbname = "CT_Users";
-		$conn = new mysqli($server, $username, $dbpassword, $dbname);
+		include ("dbConnect.php");
 
-		if (mysqli_connect_errno()) 
-		{ 
-			exit;
-		}	
 
 		$card = $_GET['card'];
 		$ss = $_GET['ss'];
@@ -148,11 +140,12 @@ document.getElementById("time").innerHTML = d.toDateString();
 		$result = $conn->query($sql1) or die('Could not run query: '.$conn->error);
 		$row = $result->fetch_assoc();
 		$user = $row["userID"];
-        $sql = "INSERT INTO payments (user_ID, ccNumber, ccSecCode, ccExpDate, ccType, form_ID, amountPaid) VALUES ('$user', '$card', '$ss', '$ex', '$type', 1, 44)";
+        $sql = "INSERT INTO payments (user_ID, ccNumber, ccSecCode, ccExpDate, ccType, form_ID, amountPaid) VALUES ('$user', '$card', '$ss', '$ex', '$type', 1, 50)";
 			
 
 			if($conn->query($sql))
 			{
+			  // $sql = "INSERT INTO payments (user_ID, ccNumber, ccSecCode, ccExpDate, ccType, form_ID, amountPaid) VALUES ('$user', '$card', '$ss', '$ex', '$type', 1, 44)";
 				echo "Your payment was successfully registed, Thank you.". "<br />";
 				echo  "<br />";
 				echo "reciept";

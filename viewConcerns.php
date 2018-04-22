@@ -1,33 +1,33 @@
 <?php 
 
-	session_start();
-	if (isset($_SESSION['username']))
-	{
-		$currUserID = $_SESSION['username'];
-	}
-	else
-	{
-		header("Location: logout.php");
-	}
+  session_start();
+  if (isset($_SESSION['username']))
+  {
+    $currUserID = $_SESSION['username'];
+  }
+  else
+  {
+    header("Location: logout.php");
+  }
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>City Town</title>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-	<link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
-	<link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <title>City Town</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
+  <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
-	body{font-family: 'Quicksand', sans-serif;}
-	.w3-theme {color:#fff !important;background-color:#024575 !important}
+  body{font-family: 'Quicksand', sans-serif;}
+  .w3-theme {color:#fff !important;background-color:#024575 !important}
 
-	.w3-text-theme-d1 {color:#024575 !important}
-	.w3-text-theme-d2 {color:#e9f5ff !important}
-	.w3-hover-text-theme-d1 {color: #e9f5ff !important}
+  .w3-text-theme-d1 {color:#024575 !important}
+  .w3-text-theme-d2 {color:#e9f5ff !important}
+  .w3-hover-text-theme-d1 {color: #e9f5ff !important}
 ul {
     list-style-type: none;
     margin: 9px;
@@ -37,7 +37,7 @@ ul {
     height: 100%;
     position: fixed;
     overflow: auto;
-	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
    
 }
 
@@ -63,16 +63,16 @@ h1{
 }
 
 table {
-	border: 2px solid black;
-	background-color: #e9f5ff;
+  border: 2px solid black;
+  background-color: #e6e6e6;
 }
 
 th {
-	border-bottom: 5px solid #000;
+  border-bottom: 5px solid #000;
 }
 
 td {
-	border-bottom: 2px solid #666;
+  border-bottom: 2px solid #000;
 }
 
 </style>
@@ -81,24 +81,24 @@ td {
 
 <!-- Top Bar -->
 <div class="w3-bar  w3-theme w3-large" >
-  	<span> Welcome, <?php echo $currUserID;?> <a href="logout.php"><b>(logout)</b></a></span>
+    <span> Welcome, <?php echo $currUserID;?> <a href="logout.php">(logout)</a></span>
 
- 	 <span class="w3-bar-item w3-text-theme-d2 w3-right">City Town</span>
-	<span class="w3-bar-item w3-text-theme-d2 w3-left"></span>
+   <span class="w3-bar-item w3-text-theme-d2 w3-right">City Town</span>
+  <span class="w3-bar-item w3-text-theme-d2 w3-left"></span>
 </div>
 <!-- End of Top Bar -->
 
 <!-- Name and Date -->
 
 <div class="w3-col s8 w3-bar w3-text-grey" style="margin-left:5px">
-      <b><p id="time"></p></b>
+      <p id="time"></p>
     </div>
 <!-- End  -->
 
 <!-- Left Column -->
 <header class="w3-container w3-text-grey">
 
-    <h5><b><i class="fa fa-user-circle "></i> MY ACCOUNT</b></h5>
+    <h5><i class="fa fa-user-circle "></i> MY ACCOUNT</h5>
 
  </header>
 
@@ -108,10 +108,10 @@ td {
 
 <ul>
 
-  	<li><a class="active" href="FireHome.php"><i class="fa fa-home"></i> HOME</a></li>
-	<li><a href="dropdown_BloodTypes.php"> <i class="fa fa-credit-card-alt"></i>  MY PAYMENTS</a></li>
-	<li><a href="viewConcerns.php"><i class="fa fa-question"></i>  MY CONCERNS</a></li>
-	<li><a href="accountsettings.php"><i class="fa fa-cog"></i>  ACCOUNT SETTINGS</a></li>
+    <li><a class="active" href="FireHome.php"><i class="fa fa-home"></i> HOME</a></li>
+  <li><a href="dropdown_BloodTypes.php"> <i class="fa fa-credit-card-alt"></i>  MY PAYMENTS</a></li>
+  <li><a href="viewConcerns.php"><i class="fa fa-question"></i>  MY CONCERNS</a></li>
+  <li><a href="accountsettings.php"><i class="fa fa-cog"></i>  ACCOUNT SETTINGS</a></li>
 </ul>
 
 <script>
@@ -122,53 +122,166 @@ document.getElementById("time").innerHTML = d.toDateString();
 <div class="w3-content w3-margin-top" style="max-width:1400px;">
 <div class="w3-row-padding">
   
-<div class="w3-twothird" style="margin-left:300px">
-
-<?php
-
-try {
-  $con= new PDO('mysql:host=localhost;dbname=CT_Users', "root", "root");
-  $con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-  $query = "SELECT * FROM feedback WHERE department = 'Fire Department'";
-  //first pass just gets the column names
-  print "<table> ";
-  $result = $con->query($query);
-  //return only the first row (we only need field names)
-  $row = $result->fetch(PDO::FETCH_ASSOC);
-  print " <tr> ";
-  foreach ($row as $field => $value){
-   print " <th>$field</th> ";
-  } // end foreach
-  print " </tr> ";
-  //second query gets the data
-  $data = $con->query($query);
-  $data->setFetchMode(PDO::FETCH_ASSOC);
-  foreach($data as $row){
-   print " <tr> ";
-   foreach ($row as $name=>$value){
-   print " <td>$value</td> ";
-   } // end field loop
-   echo "<td><a class='active' href='approveConcern.php'>Approve</a></td>";
-   //<input type='submit' name='Approve' value='Approve' formaction='approveConcern.php'></td>";
-   //echo "<td><input type='submit' name='Deny' value='Deny' onclick=document.location.href='denyConcern.php'></td>";
-   print " </tr> ";
-  } // end record loop
-  print "</table> ";
-  } catch(PDOException $e) {
-   echo 'ERROR: ' . $e->getMessage();
-  } // end try
-
-?>
+<div class="w3-twothird" style="margin-left:215px">
 
 
-<script type="text/javascript">
-function redir()
+  <?php
+
+  include ("dbConnect.php");
+
+  $sql = 'SELECT * FROM feedback WHERE status != "complete" AND department = "Fire Department"';
+  $query = mysqli_query($conn, $sql);
+
+  if(!$query)
+  {
+    die('SQL Error: ' . mysqli_error($conn));
+  }
+
+  ?>
+
+  <table class="w3-table-all w3-hoverable w3-card" name="table" id="table">
+    <thead>
+      <tr>
+        <th>Feedback ID</th>
+        <th>Username</th>
+        <th>Type</th>
+        <th>Department</th>
+        <th>Explanation</th>
+        <th>Date Submitted</th>
+        <th>Status</th>
+        <th>Complete</th>
+        <th>Forward</th>
+        <th>Forwarding Department</th>
+        <th>Submit</th>
+      </tr>
+    </thead>
+
+    <tbody>
+
+      <form action="processConcern.php" method="POST">
+
+    <?php
+    
+
+    $no = 0;
+
+
+    while($row = mysqli_fetch_array($query))
+    {
+
+      $rows[] = $row['feedbackID'];
+
+      echo '<tr>';
+      echo '<td>';
+      echo $row['feedbackID'];
+      echo '</td>';
+
+      echo '<td>';
+      echo $row['userName'];
+      echo '</td>';
+
+      echo '<td>';
+      echo $row['concernType'];
+      echo '</td>';
+
+      echo '<td>';
+      echo $row['department'];
+      echo '</td>';
+
+      echo '<td>';
+      echo $row['reason'];
+      echo '</td>';
+
+      echo '<td>';
+      echo $row['dateSubmitted'];
+      echo '</td>';
+
+      echo '<td>';
+      echo $row['status'];
+      echo '</td>';
+
+      echo "<td>";
+      echo "<input type='checkbox' name='complete' id='complete' value='".$no."'/>";
+      echo "</td>";
+
+      echo "<td>";
+      echo "<input type='checkbox' name='forward' id='forward' value='".$no."'/>";
+      echo "</td>";
+
+      echo "<td>";
+      echo "<select name='select' id='depts'>";
+      echo "<option value = ></option>";
+      echo "<option value = 'Fire Department'>Fire Department</option>";
+      echo "<option value = 'Police Department'>Police Department</option>";
+      echo "<option value = 'Town Clerk'>Town Clerk</option>";
+      echo "<option value = 'Town Administrator'>Town Administrator</option>";
+      echo "</td>";
+
+
+      echo "<td>";
+      echo "<input type='submit' name='submit".$no."' value='submit' onclick='post()'></a>";
+      echo "</td>";
+    
+      echo "</tr>";
+
+      
+
+      $no++;
+    }
+    //print_r($rows);
+
+    $query->free();
+
+    ?>
+</tbody>
+</table>
+
+
+<div id="result"></div>
+<p id="demo"></p>
+<p id="demo2"></p>
+
+
+
+<script>
+
+function post()
 {
-	window.location = "approveConcern.php";
+  var a = <?php echo json_encode($rows); ?>;
+  //alert(a);
+  var hr = new XMLHttpRequest();
+  var url = "processConcern.php";
+
+  var complete = document.getElementById("complete").value;
+
+  var forward = document.getElementById("forward").value;
+  var dept = document.getElementById("depts").value;
+  //document.getElementById("demo").innerHTML = dept;
+
+  var vars = "complete="+complete+"&forward="+forward+"&dept="+dept+"&ID="+a[forward];
+
+  //alert(vars);
+
+  hr.open("POST", url, true);
+
+  hr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+  hr.onreadystatechange = function()
+  {
+    if(hr.readyState == 4 && hr.status == 200)
+    {
+      var return_data = hr.responseText;
+      document.getElementById("demo").innerHTML = return_data;
+    }
+  }
+  hr.send(vars);
+  document.getElementById("result").innerHTML = "processing...";
 }
-</script>
 
 
-
-
-
+</script> 
+</div>
+</div>
+</div>
+</body>
+</html>

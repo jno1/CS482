@@ -3,16 +3,7 @@ session_start();
 
 $comfirmationPage = "comfirmpasschange.html";
 
-$server= 'localhost';
-		$username = 'root';
-		$dbpassword = 'root';
-		$dbname = "CT_Users";
-		$conn = new mysqli($server, $username, $dbpassword, $dbname);
-		
-		if (mysqli_connect_errno()) 
-		{ 
-			exit;
-		}
+		include ("dbConnect.php");
 		
 		$username = filter_var($_GET['user'], FILTER_SANITIZE_STRING);
 	

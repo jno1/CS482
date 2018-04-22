@@ -168,16 +168,8 @@ document.getElementById("time").innerHTML = d.toDateString();
 					{
 						header("Location: logout.php");
 					}
-					$server= 'localhost';
-					$username = 'root';
-					$dbpassword = 'root';
-					$dbname = "CT_Users";
-					$conn = new mysqli($server, $username, $dbpassword, $dbname);
-					
-					if (mysqli_connect_errno()) 
-					{ 
-						exit;
-					}
+					include ("dbConnect.php");
+
 					
 					$status = $_GET['status'];
 					$type = $_GET['type'];

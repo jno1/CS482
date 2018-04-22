@@ -93,8 +93,8 @@ h1{
 
 <ul>
 
-  	<li><a class="active" href="Frontendhome.php"><i class="fa fa-home"></i> HOME</a></li>
-	<li><a href="dropdown_BloodTypes.php"> <i class="fa fa-credit-card-alt"></i> CASE HISTORY</a></li>
+  	<li><a class="active" href="Police.html"><i class="fa fa-home"></i> HOME</a></li>
+	<li><a href="casehistoryhtml.php"> <i class="fa fa-credit-card-alt"></i> CASE HISTORY</a></li>
 	<li><a href="cityTownConcerns.php"><i class="fa fa-question"></i>  MY CONCERNS</a></li>
 	<li><a href="accountsettings.php"><i class="fa fa-cog"></i>  ACCOUNT SETTINGS</a></li>
 </ul>
@@ -120,12 +120,15 @@ document.getElementById("time").innerHTML = d.toDateString();
 
 		<div class="w3-container w3-card w3-white w3-margin-bottom">
 		<h2 class="w3-text-grey w3-padding-16"><i class="fa fa-cog fa-fw w3-margin-right w3-xxlarge w3-text-theme"></i>Account settings</h2>
-			<b>Change Password</b>
+			<b>Case History</b>
+	
 		<?php
-		session_start();
-		if (isset($_SESSION['username']))
+				session_start();
+
+if (isset($_SESSION['username']))
 		{
 			$currUserID = $_SESSION['username'];
+		//	$formid = $_SESSION['username'];
 		}
 		else
 		{
@@ -134,58 +137,75 @@ document.getElementById("time").innerHTML = d.toDateString();
 		include ("dbConnect.php");
 
 		
-
-		$oldpass = $_GET['oldpassword'];
-		$newpass = $_GET['password'];
-		$comfpass = $_GET['password1'];
+		$status = $_GET['status'];
+		$type = $_GET['type'];
+		$sql1="select dept_ID
+						from users
+							where userName = '$currUserID' " ;
+			$result1 = $conn->query($sql1) or die('Could not run query: '.$conn->error);
+			$row1 = $result1->fetch_assoc();
+			$dept = $row1["dept_ID"];		
+		$sql2="select deptName
+						from department
+							where deptID = '$dept'" ;
+			$result2 = $conn->query($sql2) or die('Could not run query: '.$conn->error);
+			$row2 = $result2->fetch_assoc();
+			$deptname = $row2["deptName"];						
 	
+			
 		
+		
+		//Create query
+		$sqlEmp1="select typeOfForm.formtype, forms.formID, forms.submitDate
+						from forms, formapproval, typeOfForm
+							where formapproval.state='$status'
+							and	typeOfForm.police!=0
+							and (typeOfForm.police - typeOfForm.totaldepts=0) 
+							and forms.formID=formapproval.form_ID
+							and typeOfForm.typeID=forms.type_ID; " ;
+		//Execute query
+		$result = $conn->query($sqlEmp1) or die('Could not run query: '.$conn->error);
 
-		if($newpass==$comfpass) {
-			$sqlEmp=("select * 
-						from users 
-							where userName='$currUserID' "); //currUserID
-			$result = $conn->query($sqlEmp) or die('Could not run query: '.$conn->error);
-				$row = $result->fetch_assoc();
-				$hashPass = $row["pass"];
-				$dehash = password_verify($oldpass, $hashPass);
-				if ($dehash==true) {
-					$hashPass1 = password_hash($comfpass, PASSWORD_DEFAULT, ['cost' => 10]);
-					$sql=("UPDATE users 
-							Set pass = '" .$hashPass1.
-								"' WHERE userName ='$currUserID' ");					
-					if ($conn->query($sql) == TRUE ) {
-		    			echo "update successfully";
-						$redirect = "changepasswordhtml.php";
-						header('Location:'.$redirect);
-		    
-					} 
-				else {
-		    		echo "Error: " . $sql . "<br>" . $conn->error;
+		//if ($result->num_rows > 0) {
+			// output data of each row
+			//echo "<h3> open forms ".$ingtypeName."  </h3>";
+			//echo " <table border='1'> ";
+			//echo "<tr>
+			//		<th> formtype </th>
+			//		<th> form ID </th>
+			//		<th> submission data </th>
 
-				}
-		
-			}
-	
-		
-			else{
-				echo "inccorect password";
-			}
+			//	  </tr>";
+			while($row = $result->fetch_assoc()) {
+				
+				//setcookie($cookie_name, time() + (86400 * 1), "/");
+
+					echo "<tr>
+				
+					<p><td>"."------------------------------"."</td></p>
+					<p><td>".$row["formID"]. "</td></p>
+					<p><td>".$row["formtype"]. "</td></p>
+					<p><td>".$row["submitDate"]. "</td></p>
+					</tr>";
+					$formid = $row["formID"];
+					$_Session["form"]=$formid;
+					echo "form id is " . $_Session["form"] . ".<br>";   
+					echo "<tr>
+					<p><td><a class='active' href='viewform.php?var=$formid&var2=$status$ '>View</a></td></p>
+					</tr>";}
+
+
+					
+				
+			
+		//} 
+		//else {
+		//		echo "0 results";
 		//}
-	}
-		
-	else {
-		
-		echo "fields did not match";
+		$conn->close();
 
-		
-	}
-		
-
-	$conn->close();
-
-	?>
-			<br><br>
+		?>
+				<br><br>
 		</fieldset>
 	</form>
 								

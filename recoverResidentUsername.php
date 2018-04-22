@@ -1,4 +1,5 @@
 <?php
+include ("dbConnect.php");
 
 $fName = filter_var($_POST['first'], FILTER_SANITIZE_STRING);
 $lName = filter_var($_POST['last'], FILTER_SANITIZE_STRING);
@@ -6,15 +7,6 @@ $email = filter_var($_POST['email'], FILTER_SANITIZE_STRING);
 
 if(isset($_POST['first']) && isset($_POST['last']) && isset($_POST['email']))
 {
-	$server= 'localhost';
-    $username = 'root';
-    $dbpassword = 'root';
-    $dbname = 'CT_Users';
-
-    $db = new mysqli($server, $username, $dbpassword, $dbname);
-
-    if (mysqli_connect_errno()) 
-        exit;
 
     $string = "";
 
@@ -28,7 +20,6 @@ if(isset($_POST['first']) && isset($_POST['last']) && isset($_POST['email']))
 
     echo $string;
 
-    $db->close();
 }
 
 ?>

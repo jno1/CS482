@@ -93,10 +93,10 @@ h1{
 
 
 <ul>
-  	<li><a class="active" href="FrontendHome.php"><i class="fa fa-home"></i> HOME</a></li>
-	<li><a href="paymentpageHTML.php"> <i class="fa fa-credit-card-alt"></i>  MY PAYMENTS</a></li>
+  	<li><a class="active" href="Police.html"><i class="fa fa-home"></i> HOME</a></li>
+	<li><a href="casehistoryhtml.php"> <i class="fa fa-credit-card-alt"></i>  Case History</a></li>
 	<li><a href="cityTownConcerns.php"><i class="fa fa-question"></i>  MY CONCERNS</a></li>
-	<li><a href="accountsettings.php"><i class="fa fa-cog"></i>  ACCOUNT SETTINGS</a></li>
+	<li><a href="accountsettingsHTML.php"><i class="fa fa-cog"></i>  ACCOUNT SETTINGS</a></li>
 </ul>
 
 <!-- End  -->
@@ -119,64 +119,28 @@ document.getElementById("time").innerHTML = d.toDateString();
 
 		<div class="w3-container w3-card w3-white w3-margin-bottom">
 		<h2 class="w3-text-grey w3-padding-16"><i class="fa-fw w3-margin-right w3-xxlarge w3-text-theme"></i>Payment Page</h2>
-			<b>Payment</b>
-				<form action="paymentpage.php">
+			<b>forms</b>
+				<form action="casehistory.php">
 		<fieldset>
 			<legend></legend>
 			
-			<p>The fee for submiting this form is $50</p>
-			<p>Enter information as it appears on the card </p>
-    		First Name: <input type="first" name="first" placeholder=""> <br><br>
-    		Last Name: <input type="last" name="last" placeholder=""> <br><br>
-    		Card Number: <input type="card" name="card" placeholder=""> <br><br>
-    		security code: <input type="ss" name="ss" placeholder=""> <br><br>
-    		Card Expiration:
-			<select name='expireMM' id='expireMM'>
-   				<option value=''>Month</option>
-   				<option value='01'>January</option>
-   				<option value='02'>February</option>
-    			<option value='03'>March</option>
-    			<option value='04'>April</option>
-   				<option value='05'>May</option>
-    			<option value='06'>June</option>
-    			<option value='07'>July</option>
-    			<option value='08'>August</option>
-    			<option value='09'>September</option>
-    			<option value='10'>October</option>
-    			<option value='11'>November</option>
-    			<option value='12'>December</option>
-			</select> 
-			<select name='expireYY' id='expireYY'>
-    			<option value=''>Year</option>
-    			<option value='10'>2018</option>
-    			<option value='11'>2019</option>
-    			<option value='12'>2020</option>
-    			<option value='13'>2021</option>
-    			<option value='14'>2022</option>
-    			<option value='15'>2023</option>
-    			<option value='16'>2024</option>
 
-</select> 
-<input class="inputCard" type="hidden" name="expiry" id="expiry" maxlength="4"/>
-
-			<hr>
-			
-
-
-    		<p>Billing Address:</p>
-    		Address 1: <input type="address1" name="address1" placeholder=""> <br><br>
-    		Address 2: <input type="address2" name="address2" placeholder=""> <br><br>
-    		City <input type="city" name="city" placeholder=""> <br><br>
-    		State <input type="state" name="state" placeholder=""> <br><br>
-    		Zip code <input type="zipcode" name="zipcode" placeholder=""> <br><br>
+			<p>form status </p>
+    			<select name='status' id='status'>
+   				<option value=''>type</option>
+   				<option value='pending'>pending</option>
+   				<option value='approved'>approved</option>
+    			<option value='denied'>denied</option>
     		
-    		<hr>
-    				
+			</select> <br><br>
 
-
-
-
-    		<br><br>
+    		<p>type of form</p>
+			<select name='type' id='type'>
+   				<option value=''>Month</option>
+   				<option value='burgular alarm'>burgular alarm</option>
+   				<option value='All'>All</option>
+			<br><br>
+			</select> 
 
     		<input type="submit" value="submit">
 			<button type="reset" value="Reset">Reset</button> 

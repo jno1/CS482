@@ -12,16 +12,8 @@
 
 <?php
 
-	$server= 'localhost';
-			$username = 'root';
-			$dbpassword = 'root';
-			$dbname = "CT_Users";
-			$conn = new mysqli($server, $username, $dbpassword, $dbname);
-			
-			if (mysqli_connect_errno()) 
-			{ 
-				exit;
-			}
+	include ("dbConnect.php");
+
 			
 			$fName = filter_var($_GET['fname'], FILTER_SANITIZE_STRING);
 			$lName = filter_var($_GET['lname'], FILTER_SANITIZE_STRING);

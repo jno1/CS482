@@ -1,5 +1,7 @@
 <?php
 
+include ("dbConnect.php");
+
 $username = filter_var($_POST['user'], FILTER_SANITIZE_STRING);
 $password = filter_var($_POST['pass'], FILTER_SANITIZE_STRING);
 $passConfirm = filter_var($_POST['passConfirm'], FILTER_SANITIZE_STRING);
@@ -7,7 +9,7 @@ $fName = filter_var($_POST['fname'], FILTER_SANITIZE_STRING);
 $lName = filter_var($_POST['lname'], FILTER_SANITIZE_STRING);
 $phoneNum = filter_var($_POST['phoneNum'], FILTER_SANITIZE_STRING);
 $email = filter_var($_POST['email'], FILTER_SANITIZE_STRING);
-$deptID = filter_var($_POST['dept_ID'], FILTER_SANITIZE_STRING);
+$deptID = filter_var($_POST['deptID'], FILTER_SANITIZE_STRING);
 
 if(!empty($username) && !empty($password) && !empty($passConfirm) && !empty($fName) && !empty($lName) && !empty($phoneNum) && !empty($email) && !empty($deptID))
 {
@@ -16,19 +18,7 @@ if(!empty($username) && !empty($password) && !empty($passConfirm) && !empty($fNa
 				preg_match( '/\d/', $password ) &&    # digit
 				(strlen($password) > 8))
 	{
-		$host = "localhost";
-		$dbusername = "root";
-		$dbpassword = "root";
-		$dbname = "CT_Users";
-
-		$conn = new mysqli($host, $dbusername, $dbpassword, $dbname);
-
-		if(mysqli_connect_error())
-		{
-			die('Connect Error('.mysqli_connect_errno().')'.mysql_error());
-		}
-		else
-		{
+		
 			$result = $conn->query("SELECT userName, pass FROM users WHERE userName = '$username' AND pass = '$password'");
 
 			if($result->num_rows != 0)
@@ -50,7 +40,7 @@ if(!empty($username) && !empty($password) && !empty($passConfirm) && !empty($fNa
 			}
 
 			$conn->close();
-		}
+		
 	}
 
 	else
